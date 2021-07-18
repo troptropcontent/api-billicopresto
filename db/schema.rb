@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_18_124630) do
+ActiveRecord::Schema.define(version: 2021_07_18_125216) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,9 +81,9 @@ ActiveRecord::Schema.define(version: 2021_07_18_124630) do
   end
 
   create_table "tills", force: :cascade do |t|
-    t.string "reference"
     t.bigint "retailer_id", null: false
     t.bigint "receipt_id", null: false
+    t.string "reference"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["receipt_id"], name: "index_tills_on_receipt_id"
