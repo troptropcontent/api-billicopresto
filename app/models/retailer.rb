@@ -4,7 +4,6 @@ class Retailer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :items
-  has_many :receipt_lines
+  has_many :tills
   
 end
