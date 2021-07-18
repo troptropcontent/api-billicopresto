@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_13_044353) do
+ActiveRecord::Schema.define(version: 2021_07_18_124630) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,8 +74,20 @@ ActiveRecord::Schema.define(version: 2021_07_13_044353) do
     t.string "complement"
     t.string "country"
     t.string "region"
+    t.string "zip_code"
+    t.string "city"
     t.index ["email"], name: "index_retailers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_retailers_on_reset_password_token", unique: true
+  end
+
+  create_table "tills", force: :cascade do |t|
+    t.string "reference"
+    t.bigint "retailer_id", null: false
+    t.bigint "receipt_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["receipt_id"], name: "index_tills_on_receipt_id"
+    t.index ["retailer_id"], name: "index_tills_on_retailer_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -98,4 +110,6 @@ ActiveRecord::Schema.define(version: 2021_07_13_044353) do
   add_foreign_key "receipt_lines", "receipts"
   add_foreign_key "receipts", "retailers"
   add_foreign_key "receipts", "users"
+  add_foreign_key "tills", "receipts"
+  add_foreign_key "tills", "retailers"
 end
