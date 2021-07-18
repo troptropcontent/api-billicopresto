@@ -1,0 +1,9 @@
+fr:
+  seed:
+    creation_of_one: "Creation d'un/une nouveau/nouvelle %{model}"
+    users:
+      user_created: |
+        User crée: 
+        first_name: %{first_name} 
+        last_name: %{last_name} 
+        email: %{email}
