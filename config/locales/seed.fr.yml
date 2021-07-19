@@ -1,8 +1,9 @@
 fr:
   seed:
+    reseting_model_database: "Suppression de tout eventuel %{model} record"
     creation_of_many: "Creation d'une base de %{number} %{model}"
     creation_of_one: "Creation d'un/une nouveau/nouvelle %{model}"
     users:
       user_created: "User crée: first_name => %{first_name}, last_name => %{last_name}, email => %{email}"
     retailers:
-      retailer_created: "Retailer crée: brand => %{brand}, name => {name}, address => %{number} %{street} %{zip_code} %{city}, email => %{email}"
+      retailer_created: "Retailer crée: name => {name}, address => %{full_address}, zip_code => %{zip_code}, city => %{city} , email => %{email}"
