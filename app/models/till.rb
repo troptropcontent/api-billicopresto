@@ -1,4 +1,4 @@
 class Till < ApplicationRecord
   belongs_to :retailer
-  belongs_to :receipt
+  has_many :receipts
 end
