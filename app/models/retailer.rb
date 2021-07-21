@@ -5,6 +5,11 @@ class Retailer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :tills
+
   enum brand: [:carrefour_market, :monoprix, :auchan]
   
+
+  def receipts
+    Receipts.includes(:till).where(tills:{building_id: building_id})
+  end
 end

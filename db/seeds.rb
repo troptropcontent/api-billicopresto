@@ -42,3 +42,23 @@ while number_of_entity_created <= number_of_devise_entity do
 	number_of_entity_created += 1
 end
 
+Retailer.all.each do |retailer|
+	random_number_of_tills = (1..10).to_a.sample
+	random_number_of_tills.times do |n|
+		new_till = retailer.tills.create!(reference: n)
+		random_number_of_receipts = (1..10).to_a.sample
+		random_number_of_receipts.times do
+			new_till.receipts.create!(reference: next_receipt_reference(retailer))
+			
+		end
+	end
+end
+
+
+def next_receipt_reference(retailer)
+	retailer_acronym = I18n.transliterate(retailer.name).upcase.gsub(" ","")[0..3]
+	last_id = retailer.receipts.last&.id || 0
+	next_available_id = last_id + 1
+	number_of_zeros = 5 - next_available_id.to_s.length
+	"#{retailer_acronym}#{"0"*number_of_zeros}#{next_available_id}"
+end
