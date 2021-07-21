@@ -42,17 +42,21 @@ while number_of_entity_created <= number_of_devise_entity do
 	number_of_entity_created += 1
 end
 
+ap I18n.t 'seed.reseting_model_database', model: Receipt.name
+Receipt.delete_all
+ap I18n.t 'seed.creation_of_seed', model: Receipt.name
 Retailer.all.each do |retailer|
 	random_number_of_tills = (1..10).to_a.sample
 	random_number_of_tills.times do |n|
 		new_till = retailer.tills.create!(reference: n)
 		random_number_of_receipts = (1..10).to_a.sample
 		random_number_of_receipts.times do
-			new_till.receipts.create!(reference: next_receipt_reference(retailer))
-			
+			new_receipt = new_till.receipts.create!(reference: next_receipt_reference(retailer))
+			# ap I18n.t 'seed.receipts.receipt_created', retailer: retailer, reference: new_receipt.reference
 		end
 	end
 end
+
 
 
 def next_receipt_reference(retailer)
