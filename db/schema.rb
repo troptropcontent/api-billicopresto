@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_21_202222) do
+ActiveRecord::Schema.define(version: 2021_07_26_202432) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -53,13 +53,11 @@ ActiveRecord::Schema.define(version: 2021_07_21_202222) do
     t.integer "amount_including_taxes_cent"
     t.integer "taxe_rate"
     t.integer "amount_taxes_cent"
-    t.bigint "retailer_id", null: false
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "till_id"
     t.string "reference"
-    t.index ["retailer_id"], name: "index_receipts_on_retailer_id"
     t.index ["till_id"], name: "index_receipts_on_till_id"
     t.index ["user_id"], name: "index_receipts_on_user_id"
   end
@@ -112,7 +110,6 @@ ActiveRecord::Schema.define(version: 2021_07_21_202222) do
   add_foreign_key "items", "retailers"
   add_foreign_key "receipt_lines", "items"
   add_foreign_key "receipt_lines", "receipts"
-  add_foreign_key "receipts", "retailers"
   add_foreign_key "receipts", "users"
   add_foreign_key "tills", "retailers"
 end

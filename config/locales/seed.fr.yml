@@ -10,3 +10,5 @@ fr:
       retailer_created: "Retailer crée: name => %{name}, address => %{full_address}, zip_code => %{zip_code}, city => %{city} , email => %{email}"
     receipts:
       receipt_created: "Ticket de caisse pour le magasin %{retailer} crée: reference => %{reference}"
+    product:
+      product_created: "Produit créé, name => %{name}, kind => %{kind} "

@@ -10,6 +10,6 @@ class Retailer < ApplicationRecord
   
 
   def receipts
-    Receipts.includes(:till).where(tills:{building_id: building_id})
+    Receipt.includes(:till).where(tills:{retailer: self})
   end
 end
