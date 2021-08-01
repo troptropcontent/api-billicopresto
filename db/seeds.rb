@@ -1,5 +1,4 @@
 require "./app/lib/open_data_paris/open_data_paris_client"
-require "./app/models/receipt"
 
 def next_receipt_reference(retailer)
 	retailer_acronym = I18n.transliterate(retailer.name).upcase.gsub(" ","")[0..3]
@@ -11,6 +10,15 @@ end
 
 grocery_store_database ||= OpenDataParisClient.fetch_grocery_store(50)
 number_of_devise_entity = 20
+
+ap I18n.t 'seed.reseting_model_database', model: Product.name
+Product.delete_all
+ap I18n.t 'seed.creation_of_seed', model: Product.name
+product_base = CSV.parse(File.open('/Users/tom/troptropcontent/api-billicopresto/db/seed_base_product.csv'))
+product_base.each do |product|
+	new_product = Product.create!(name: product[0], kind: product[1] )
+	I18n.t 'seed.receipts.product_created', name: new_product.name, kind: new_product.kind
+end
 
 ap I18n.t 'seed.reseting_model_database', model: Retailer.name
 Retailer.delete_all
@@ -28,6 +36,14 @@ grocery_store_database.each do |grocery_store|
 		password_confirmation: "Test.123"
 		)
 	ap I18n.t 'seed.retailers.retailer_created', name: retailer.name, full_address: retailer.full_address, zip_code: retailer.zip_code, city: retailer.city, email: retailer.email
+	ap I18n.t 'seed.reseting_model_database', model: Item.name
+	retailer.items.delete_all
+	ap I18n.t 'seed.creation_of_seed', model: Item.name
+	random_number_of_item = (5..20).to_a.sample
+	catalogue = Product.all.sample(random_number_of_item)
+	catalogue.each do |product| 
+		retailer.items.create!(product: product)
+	end
 	break if Retailer.count == number_of_devise_entity
 end
 
@@ -51,15 +67,6 @@ while number_of_entity_created <= number_of_devise_entity do
 	number_of_entity_created += 1
 end
 
-ap I18n.t 'seed.reseting_model_database', model: Product.name
-Product.delete_all
-ap I18n.t 'seed.creation_of_seed', model: Product.name
-product_base = CSV.parse(File.open('/Users/tom/troptropcontent/api-billicopresto/db/seed_base_product.csv'))
-product_base.each do |product|
-	new_product = Product.create!(name: product[0], kind: product[1] )
-	I18n.t 'seed.receipts.product_created', name: new_product.name, kind: new_product.kind
-end
-
 ap I18n.t 'seed.reseting_model_database', model: Receipt.name
 Receipt.delete_all
 ap I18n.t 'seed.creation_of_seed', model: Receipt.name
@@ -74,10 +81,17 @@ Retailer.all.each do |retailer|
 			I18n.t 'seed.receipts.receipt_created', retailer: retailer.name, reference: new_receipt.reference
 			random_number_of_lines = (1..10).to_a.sample
 			random_number_of_lines.times do
-				byebug
-				# new_receipt.receipt_lines
-				# product = Product.where.not(id: new_receipt.receipt_lines.)
-				# new_receipt.lines.create!()
+				avaialble_items = new_receipt.available_items
+				random_item = avaialble_items.sample
+				random_quantity = (1..10).to_a.sample
+				random_unit_price = (99..10000).to_a.sample
+				taxe_rate = 20
+				new_receipt.receipt_lines.create!(
+					quantity: random_quantity,
+					item: random_item,
+					unit_price_cent: random_unit_price,
+					taxe_rate: taxe_rate,
+					)
 			end
 		end
 	end
