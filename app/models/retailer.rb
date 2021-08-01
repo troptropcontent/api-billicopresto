@@ -5,6 +5,7 @@ class Retailer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :tills
+  has_many :items
 
   enum brand: [:carrefour_market, :monoprix, :auchan]
   
