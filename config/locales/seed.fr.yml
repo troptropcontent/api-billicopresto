@@ -6,6 +6,7 @@ fr:
     creation_of_seed: "Creation d'une base de %{model}"
     creation_of_seed_for: "Creation d'une base de %{model} pour le %{parent_model} %{parent_model_name}"
     creation_of_one_for: "Creation d'un/une nouveau/nouvelle %{model} pour le %{parent_model} %{parent_model_name}"
+    seed_result: "Nombre d'%{model} créé : %{count}"
     users:
       user_created: "User crée: first_name => %{first_name}, last_name => %{last_name}, email => %{email}"
     retailers:

@@ -39,7 +39,7 @@ grocery_store_database.each do |grocery_store|
 	ap I18n.t 'seed.reseting_model_database', model: Item.name
 	retailer.items.delete_all
 	ap I18n.t 'seed.creation_of_seed', model: Item.name
-	random_number_of_item = (5..20).to_a.sample
+	random_number_of_item = (10..20).to_a.sample
 	catalogue = Product.all.sample(random_number_of_item)
 	catalogue.each do |product| 
 		ap I18n.t 'seed.creation_of_one_for', model: Item.name, parent_model: retailer.class.name, parent_model_name: retailer.name 
@@ -83,20 +83,30 @@ Retailer.all.each do |retailer|
 			I18n.t 'seed.receipts.receipt_created', retailer: retailer.name, reference: new_receipt.reference
 			random_number_of_lines = (1..10).to_a.sample
 			random_number_of_lines.times do
-				ap I18n.t 'seed.creation_of_one_for', model: ReceiptLine.name, parent_model: new_till.retailer.class.name, parent_model_name: new_till.retailer
+				ap I18n.t 'seed.creation_of_one_for', model: ReceiptLine.name, parent_model: new_till.retailer.class.name, parent_model_name: new_till.retailer.name
 				avaialble_items = new_receipt.available_items
 				random_item = avaialble_items.sample
 				random_quantity = (1..10).to_a.sample
 				random_unit_price = (99..10000).to_a.sample
 				taxe_rate = 20
-				new_receipt.receipt_lines.create!(
+				new_receipt_line = new_receipt.receipt_lines.create!(
 					quantity: random_quantity,
 					item: random_item,
 					unit_price_cent: random_unit_price,
 					taxe_rate: taxe_rate,
 					)
-				
+				ap I18n.t 'seed.receipt_lines.receipt_line_created', retailer_name: new_till.retailer.name, quantity: random_quantity, unit_price: random_unit_price, taxe_rate: taxe_rate, amount_including_taxes: new_receipt_line.amount_including_taxes_cent, product_name: random_item.product.name 
 			end
 		end
 	end
 end
+
+ap I18n.t 'seed.seed_result', model: User.name, count: User.all.count
+ap I18n.t 'seed.seed_result', model: Product.name, count: Product.all.count
+ap I18n.t 'seed.seed_result', model: Retailer.name, count: Retailer.all.count
+ap I18n.t 'seed.seed_result', model: Item.name, count: Item.all.count
+ap I18n.t 'seed.seed_result', model: Till.name, count: Till.all.count
+ap I18n.t 'seed.seed_result', model: Receipt.name, count: Receipt.all.count
+ap I18n.t 'seed.seed_result', model: ReceiptLine.name, count: ReceiptLine.all.count
+
+
