@@ -17,7 +17,7 @@ ap I18n.t 'seed.creation_of_seed', model: Product.name
 product_base = CSV.parse(File.open('/Users/tom/troptropcontent/api-billicopresto/db/seed_base_product.csv'))
 product_base.each do |product|
 	new_product = Product.create!(name: product[0], kind: product[1] )
-	I18n.t 'seed.receipts.product_created', name: new_product.name, kind: new_product.kind
+	I18n.t 'seed.products.product_created', name: new_product.name, kind: new_product.kind
 end
 
 ap I18n.t 'seed.reseting_model_database', model: Retailer.name
@@ -42,7 +42,9 @@ grocery_store_database.each do |grocery_store|
 	random_number_of_item = (5..20).to_a.sample
 	catalogue = Product.all.sample(random_number_of_item)
 	catalogue.each do |product| 
+		ap I18n.t 'seed.creation_of_one_for', model: Item.name, parent_model: retailer.class.name, parent_model_name: retailer.name 
 		retailer.items.create!(product: product)
+		ap I18n.t 'seed.items.item_created', retailer_name: retailer.name, product_name: product.name
 	end
 	break if Retailer.count == number_of_devise_entity
 end
@@ -81,6 +83,7 @@ Retailer.all.each do |retailer|
 			I18n.t 'seed.receipts.receipt_created', retailer: retailer.name, reference: new_receipt.reference
 			random_number_of_lines = (1..10).to_a.sample
 			random_number_of_lines.times do
+				ap I18n.t 'seed.creation_of_one_for', model: ReceiptLine.name, parent_model: new_till.retailer.class.name, parent_model_name: new_till.retailer
 				avaialble_items = new_receipt.available_items
 				random_item = avaialble_items.sample
 				random_quantity = (1..10).to_a.sample
@@ -92,6 +95,7 @@ Retailer.all.each do |retailer|
 					unit_price_cent: random_unit_price,
 					taxe_rate: taxe_rate,
 					)
+				
 			end
 		end
 	end
