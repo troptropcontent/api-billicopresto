@@ -1,24 +1,9 @@
-# README
+run `bundle install`
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+run `rails db:drop db:create db:migrate db:seed`
 
-Things you may want to cover:
+Seed is done
 
-* Ruby version
+All numbers of items created for dependents are random but it gives something like below : 
+![image](https://user-images.githubusercontent.com/75135824/127779281-3179a9fd-4ada-433b-941d-070058f35f8b.png)
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
