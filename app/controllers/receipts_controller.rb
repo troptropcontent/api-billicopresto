@@ -1,24 +1,14 @@
 class ReceiptsController < ApplicationController
   before_action :authenticate_user!
+  load_and_authorize_resource
+
   def index
-    conected_user
-    @receipts = current_user.receipts
+    @receipts 
   end
 
   def show
-    conected_user
-    @receipt = current_receipt
-    @retailer = current_receipt.till.retailer
-    @lines = current_receipt.receipt_lines
-  end
-
-  private
-
-  def current_receipt
-    Receipt.find(params[:id].to_i)
-  end
-
-  def conected_user
-    @user ||= current_user
+    @receipt
+    @retailer = @receipt.till.retailer
+    @lines = @receipt.receipt_lines
   end
 end

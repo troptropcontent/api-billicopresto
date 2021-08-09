@@ -28,6 +28,14 @@ RSpec.describe "Receipts", type: :request do
       get "/receipts/#{receipt.id}"
       expect(response).to have_http_status(:success)
     end
-  end
 
+    context "when a user tries to access another user receipt" do
+      let!(:another_user) {User.create!(email: "anotheruser@example.com", last_name:"Ecrepont", first_name: "Tom", password: "Test.123", password_confirmation: "Test.123")}
+      before {sign_in another_user}
+      it "throws a 404" do
+        get "/receipts/#{receipt.id}"
+        expect(response).to have_http_status(:forbidden)
+      end
+    end
+  end
 end
