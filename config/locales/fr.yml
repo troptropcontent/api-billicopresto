@@ -1,0 +1,3 @@
+fr:
+  cancan:
+    access_denied: "Vous n'êtes pas authorisé à acceder à ce contenu"
