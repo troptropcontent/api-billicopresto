@@ -1,20 +1,19 @@
-.avatar {
-  width: 40px;
-  border-radius: 50%;
+.profile {
+  color: white;
+  text-align: center;
+  margin: 4vh 0 6vh 0;
 }
-.avatar-large {
-  width: 56px;
-  border-radius: 50%;
+
+.profile i {
+  margin-bottom: 20px;
+  font-size: 35px;
 }
-.avatar-bordered {
-  width: 40px;
-  border-radius: 50%;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border: white 1px solid;
+
+.profile h2 {
+  font-size: 18px;
 }
-.avatar-square {
-  width: 40px;
-  border-radius: 0px;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
-  border: white 1px solid;
+
+.profile p {
+  font-size: 13px;
+  font-weight: 300;
 }

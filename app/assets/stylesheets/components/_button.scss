@@ -1,0 +1,29 @@
+.button-group {
+	margin: 3vh 30px 3vh 30px;
+	border-radius: 5px;
+	overflow: hidden;
+	box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, .2);
+}
+
+.button {
+	background-color: whitesmoke;
+	text-align: center;
+    vertical-align: middle;
+    padding: 2vh 10px;
+    font-size: 13px;
+    border-bottom: 1px solid lightgrey;
+    transition: background-color 0.1s ease-in;
+}
+
+.button:active {
+	background-color: lightgray;
+}
+
+.button p {
+	margin: 0 !important;
+	font-weight: 300;
+}
+
+.btn-red {
+	color: red;
+}

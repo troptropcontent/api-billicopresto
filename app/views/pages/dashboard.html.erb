@@ -1,0 +1,38 @@
+<% if @user == nil %>
+
+<h1>Become a bylower !</h1> 
+<%= link_to "Login", new_user_session_path, class: "button" %>
+
+<% else %>
+
+<div class="profile">
+	<i class="far fa-user avatar"></i>
+	<h2><%= @user.first_name %> <%= @user.last_name.upcase %> </h2>
+	<p>Male. 22yo. Paris, FR.</p>
+</div>
+
+<div class="button-group">
+	<div class="button">
+		<p>Compléter mon profil</p>
+	</div>
+	<div class="button">
+		<p>Gérer mes moyens de paiement</p>
+	</div>
+	<div class="button">
+		<p>Ajouter et gérer un compte</p>
+	</div>
+	<div class="button">
+		<p>Préférences</p>
+	</div>
+	<div class="button">
+		<p>Sécurité</p>
+	</div>
+</div>
+
+<div class="button-group">
+	<div class="button">
+		<%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "btn-red" %>
+	</div>
+</div>
+
+<% end %>
