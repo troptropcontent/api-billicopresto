@@ -37,6 +37,9 @@ gem 'blueprinter', '~> 0.25.3'
 #awesom_print
 gem "awesome_print"
 
+#font-awesome
+gem 'font-awesome-sass'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
