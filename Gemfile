@@ -40,6 +40,12 @@ gem "awesome_print"
 #font-awesome
 gem 'font-awesome-sass'
 
+#simple-form
+gem 'simple_form'
+
+#autoprefixer
+gem 'autoprefixer-rails'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 

@@ -1,0 +1,28 @@
+.navbar {
+	position: sticky !important;
+	top: 0;
+	padding: 20px 25px 50px 25px !important;
+	overflow: hidden;
+}
+
+.anim-navbar {
+	background-color: whitesmoke;
+	position: absolute;
+    width: 170vw;
+    height: 50vh;
+	border-radius: 50%;
+	transform-origin: center;
+    bottom: 10%;
+    left: -35%;
+    z-index: -100;
+   	box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, .2);
+}
+
+.navbar img {
+	height: 50px;
+}
+
+.navbar i {
+	font-size: 25px;
+	color: lightgray;
+}
