@@ -87,7 +87,7 @@ Retailer.all.each do |retailer|
 				avaialble_items = new_receipt.available_items
 				random_item = avaialble_items.sample
 				random_quantity = (1..10).to_a.sample
-				random_unit_price = (99..10000).to_a.sample
+				random_unit_price = (1..100).to_a.sample
 				taxe_rate = 20
 				new_receipt_line = new_receipt.receipt_lines.create!(
 					quantity: random_quantity,

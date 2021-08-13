@@ -3,10 +3,11 @@
 	top: 0;
 	padding: 20px 25px 50px 25px !important;
 	overflow: hidden;
+	z-index: 100;
 }
 
 .anim-navbar {
-	background-color: whitesmoke;
+	background-color: $white;
 	position: absolute;
     width: 170vw;
     height: 50vh;
@@ -15,7 +16,7 @@
     bottom: 10%;
     left: -35%;
     z-index: -100;
-   	box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, .2);
+   	// box-shadow: 0px 0px 50px 0px rgba(0, 0, 0, .2);
 }
 
 .navbar img {

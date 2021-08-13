@@ -1,2 +1,13 @@
-<h1>Receipts#index</h1>
-<p>Find me in app/views/receipts/index.html.erb</p>
+<% @receipts.each do |receipt| %>
+	<%= link_to receiptshow_path(receipt) do %>
+		<div class="card receipt-info">
+			<p> <%= receipt.created_at.strftime("%d.%m.%Y") %></p>
+			<div class="d-flex receipt-middle-line">
+				<p id="retailer"><%= receipt.till.retailer.name.upcase %>, <%= receipt.till.retailer.city.upcase %></p>
+				<p id="price"><%= receipt.amount_including_taxes_cent %>€</p>
+				<i class="fas fa-chevron-right"></i>
+			</div>
+			<p>n°<%= receipt.reference %></p>
+		</div>
+	<% end %>
+<% end %>
