@@ -4,6 +4,12 @@
 	color: grey;
 	border: 0px solid white;
 	border-bottom: 1px solid lightgrey;
+	transition: background-color 0.3s ease-in;
+
+}
+
+.card:active {
+	background-color: lightgray;
 }
 
 .receipt-middle-line {
@@ -28,4 +34,10 @@
 .receipt-middle-line i {
 	font-size: 25px;
 	color: lightgray;
+}
+
+.date {
+	padding: 10px 10px 10px 40px;
+	color: $blue;
+	font-size: 18px;
 }

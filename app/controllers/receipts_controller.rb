@@ -4,6 +4,8 @@ class ReceiptsController < ApplicationController
 
   def index
     @receipts 
+    @receipts_ordered = @receipts.group_by { |t| t.created_at.beginning_of_year } 
+    @receipts_ordered_month = @receipts.group_by { |t| t.created_at.beginning_of_month } 
   end
 
   def show
