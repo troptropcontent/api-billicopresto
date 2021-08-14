@@ -1,7 +1,26 @@
-<div class="footer d-flex">
-	<a href="#"><i class="fas fa-chart-pie"></i></a>
-	<a href="#"><i class="far fa-list-alt"></i></a>
-	<a href="#"><i class="fas fa-qrcode"></i></a>
-	<a href="#"><i class="fas fa-percent"></i></a>
-	<a href="#"><i class="fas fa-certificate"></i></a>
+<%  def display
+      if user_signed_in? 
+        'display: flex !important'
+      else
+        'display: none !important'
+      end 
+    end  
+%>
+
+<div class="footer d-flex" style="<%= display %> ">
+	<%= link_to receipts_index_path do %>
+		<i class="fas fa-chart-pie"></i>
+	<% end %>
+	<%= link_to receipts_index_path do %>
+		<i class="far fa-list-alt"></i>
+	<% end %>
+	<%= link_to receipts_index_path do %>
+		<i class="fas fa-qrcode"></i>
+	<% end %>
+	<%= link_to receipts_index_path do %>
+		<i class="fas fa-percent"></i>
+	<% end %>
+	<%= link_to receipts_index_path do %>
+		<i class="fas fa-certificate"></i>
+	<% end %>
 </div>

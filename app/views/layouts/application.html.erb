@@ -10,9 +10,23 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body style="<%= 'background-color: #2340C9;' if params[:action] == 'dashboard'%>">
-    <%= render 'shared/navbar' if user_signed_in? == "false" %>
+  <%  def bg_color
+        if params[:action] == 'dashboard' && @user != nil 
+          'background-color: #2340C9; height: 100vh;'
+        elsif params[:action] == 'dashboard' && @user == nil
+          "background: linear-gradient(-20deg, #ff9133, #fc7145, #1c2edf, #1c2edf);
+            background-size: 500vw 200vh;
+            animation: gradient 15s ease infinite;
+            height: 100vh; width: 100.2vw !important; overflow: hidden;" 
+        else
+          'background-color: whitesmoke;'
+        end 
+      end  
+  %>
+
+  <body style="<%=bg_color%>">
+    <%= render 'shared/navbar' %>
     <%= yield %>
-    <%= render 'shared/footer' if user_signed_in? == "false" %>
+    <%= render 'shared/footer'%>
   </body>
 </html>

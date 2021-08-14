@@ -1,38 +1,47 @@
 <% if @user == nil %>
 
-<h1>Become a bylower !</h1> 
-<%= link_to "Login", new_user_session_path, class: "button" %>
+	<div class="welcome profile">
+
+		<h2>Welcome to</h2>
+		<%= image_tag "logo-bylo-w.svg", alt: "bylo logo", class: "logo"%>
+
+	</div>
+
+	<div class="registration">
+		<%= link_to "Become a bylower", new_user_registration_path, class: "rounded-button" %>
+		<%= link_to "I already have an account", new_user_session_path, class: "rounded-button" %>
+	</div>
 
 <% else %>
 
-<div class="profile">
-	<i class="far fa-user avatar"></i>
-	<h2><%= @user.first_name %> <%= @user.last_name.upcase %> </h2>
-	<p>Male. 22yo. Paris, FR.</p>
-</div>
+	<div class="profile">
+		<i class="far fa-user avatar"></i>
+		<h2><%= @user.first_name %> <%= @user.last_name.upcase %> </h2>
+		<p>Male. 22yo. Paris, FR.</p>
+	</div>
 
-<div class="button-group">
-	<div class="button">
-		<p>Compléter mon profil</p>
+	<div class="button-group">
+		<div class="button">
+			<%= link_to "Compléter mon profil", edit_user_registration_path %>
+		</div>
+		<div class="button">
+			<p>Gérer mes moyens de paiement</p>
+		</div>
+		<div class="button">
+			<p>Ajouter et gérer un compte</p>
+		</div>
+		<div class="button">
+			<p>Préférences</p>
+		</div>
+		<div class="button">
+			<p>Sécurité</p>
+		</div>
 	</div>
-	<div class="button">
-		<p>Gérer mes moyens de paiement</p>
-	</div>
-	<div class="button">
-		<p>Ajouter et gérer un compte</p>
-	</div>
-	<div class="button">
-		<p>Préférences</p>
-	</div>
-	<div class="button">
-		<p>Sécurité</p>
-	</div>
-</div>
 
-<div class="button-group">
-	<div class="button">
-		<%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "btn-red" %>
+	<div class="button-group">
+		<div class="button">
+			<%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "btn-red" %>
+		</div>
 	</div>
-</div>
 
 <% end %>

@@ -19,11 +19,36 @@
 	background-color: lightgray;
 }
 
-.button p {
+.button a {
 	margin: 0 !important;
 	font-weight: 300;
+	color: black;
 }
 
 .btn-red {
 	color: red;
+}
+
+.rounded-button {
+	margin: 10px;
+	background-color: rgba(245, 245 ,245 , 0.2);
+	border-radius: 30px;
+	text-align: center;
+    vertical-align: middle;
+    padding: 2vh 10px;
+    font-size: 13px;
+    border: 1px solid white;
+    transition: background-color 0.1s ease-in;
+}
+
+.rounded-button:active {
+	background-color: rgba(245, 245 ,245 , 0.8);
+}
+
+a.rounded-button:active {
+	color : blue !important;;
+}
+
+a.rounded-button {
+	color : white !important;
 }

@@ -1,6 +1,17 @@
-<div class="navbar d-flex">
+<%  def display
+      if user_signed_in? 
+        'display: flex !important'
+      else
+        'display: none !important'
+      end 
+    end  
+%>
+
+<div class="navbar d-flex" style="<%=display%>">
 	<%= image_tag "logo-bylo.svg", alt: "bylo logo", class: "logo-navbar"%>
-	<a href="#"><i class="far fa-user"></i></a>
+	<%= link_to root_path do %>
+		<i class="far fa-user"></i>
+	<% end %>
 	<div style="<%= 'border-radius: 0%; bottom: 30%;' if params[:action] == 'index'%>" class="anim-navbar">
 	</div>
 </div>
