@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-
-  root "articles#index"
+  
+  root "pages#home"
   get 'receipts/index'
   get 'receipts/:id', to: 'receipts#show'
   devise_for :retailers
