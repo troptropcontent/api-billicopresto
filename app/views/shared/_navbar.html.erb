@@ -10,7 +10,7 @@
 <div class="navbar d-flex" style="<%=display%>">
 	<%= image_tag "logo-bylo.svg", alt: "bylo logo", class: "logo-navbar"%>
 	<%= link_to root_path do %>
-		<i class="far fa-user"></i>
+		<i class="far fa-user" id="dashboard"></i>
 	<% end %>
 
 	<% if params[:action] == 'index' %>
@@ -22,7 +22,7 @@
 		</div>
 	<% end %>
 
-	<div style="<%= 'border-radius: 0%; bottom: 0%;' if params[:action] == 'index'%>" class="anim-navbar">
+	<div style="<%= 'border-radius: 0%; bottom: 0%;' if (params[:action] == 'index' || params[:action] == 'show')%>" class="anim-navbar">
 	</div>
 
 </div>

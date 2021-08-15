@@ -11,3 +11,10 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+import { changeLinkColor } from '../components/change_link_color.js'
+
+
+document.addEventListener('turbolinks:load', () => {
+  changeLinkColor();
+});
