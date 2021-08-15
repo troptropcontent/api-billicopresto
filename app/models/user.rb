@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :receipts
+
+  def age
+    Date.current.year - birthday.year
+  end
 end
