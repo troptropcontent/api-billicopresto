@@ -1,5 +1,7 @@
 require "./app/lib/open_data_paris/open_data_paris_client"
 
+grocery_store_database ||= OpenDataParisClient.fetch_grocery_store(50)
+
 def next_receipt_reference(retailer)
 	retailer_acronym = I18n.transliterate(retailer.name).upcase.gsub(" ","")[0..3]
 	last_id = retailer.receipts.last&.id || 0
@@ -8,7 +10,16 @@ def next_receipt_reference(retailer)
 	"#{retailer_acronym}#{"0"*number_of_zeros}#{next_available_id}"
 end
 
-grocery_store_database ||= OpenDataParisClient.fetch_grocery_store(50)
+def random_address(grocery_store_database)
+	random_entity = grocery_store_database.sample
+	data = random_entity["fields"]
+	address = {
+	full_address: data["adresse"],
+	zip_code: data["code_postal"],
+	city: "Paris",
+	}
+end
+
 number_of_devise_entity = 20
 
 ap I18n.t 'seed.reseting_model_database', model: Product.name
@@ -57,12 +68,17 @@ number_of_entity_created = 0
 while number_of_entity_created <= number_of_devise_entity do
 	first_name =  Faker::Name.first_name
 	last_name = Faker::Name.last_name
+	address = random_address(grocery_store_database)
 	user = User.create(
 		email: I18n.transliterate("#{first_name}.#{last_name}@example.com"),
 		first_name: first_name,
 		last_name: last_name,
 		password: "Test.123", 
-		password_confirmation: "Test.123"
+		password_confirmation: "Test.123", 
+		birthday: rand(35.years.ago..20.years.ago), 
+		full_address: address[:full_address],
+		zip_code: address[:zip_code],
+		city: address[:city]
 		)
 	next unless user.valid?
 	ap I18n.t 'seed.users.user_created', first_name: user.first_name, last_name: user.last_name, email: user.email 
