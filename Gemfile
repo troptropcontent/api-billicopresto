@@ -28,6 +28,9 @@ gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'mast
 #authentification
 gem 'devise'
 
+#money
+gem 'money-rails', '~>1.12'
+
 #authorisation
 gem 'cancancan'
 
