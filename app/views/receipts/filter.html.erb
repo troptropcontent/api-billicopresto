@@ -1,0 +1,7 @@
+<div> hello from filter</div>
+<%= form_with url: receipts_index_path, method: :get, class: 'index_filter_form' do |form| %>
+  <%= form.label :date, "Par date" %>
+  <%= form.text_field :date %>
+  <%= form.collection_check_boxes :filter_retailer, @retailers, :id, :name %>
+  <%= form.submit "Filter" %>
+<% end %>
