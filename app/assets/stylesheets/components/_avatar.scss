@@ -25,3 +25,11 @@
   left: 50%;
   transform: translate(-50%, -60%);
 }
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  padding: 15px;
+  border-radius: 50%;
+}

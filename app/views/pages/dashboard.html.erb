@@ -8,16 +8,15 @@
 	</div>
 
 	<div class="registration">
-		<%= link_to "Become a bylower", new_user_registration_path, class: "rounded-button" %>
-		<%= link_to "I already have an account", new_user_session_path, class: "rounded-button" %>
+		<%= link_to "Devenez un bylower 🤙", new_user_registration_path, class: "rounded-button" %>
+		<%= link_to "J'ai déjà un compte 😎", new_user_session_path, class: "rounded-button" %>
 	</div>
 
 <% else %>
 
 	<div class="profile">
-		<i class="far fa-user avatar"></i>
+		<i class="far fa-user"></i>
 		<h2><%= @user.first_name %> <%= @user.last_name.upcase %> </h2>
-		<p>Male. 22yo. Paris, FR.</p>
 	</div>
 
 	<div class="button-group">

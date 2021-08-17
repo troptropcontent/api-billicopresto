@@ -1,5 +1,7 @@
 <%  def display
-      if user_signed_in? 
+      if params[:action] == 'show'
+      	'display: none !important'
+      elsif user_signed_in? 
         'display: flex !important'
       else
         'display: none !important'
@@ -22,7 +24,7 @@
 		</div>
 	<% end %>
 
-	<div style="<%= 'border-radius: 0%; bottom: 0%;' if (params[:action] == 'index' || params[:action] == 'show')%>" class="anim-navbar">
+	<div style="<%= 'border-radius: 0%; bottom: 0%;' if params[:action] == 'index'%>" class="anim-navbar">
 	</div>
 
 </div>
