@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   root to: 'pages#dashboard'
   get 'receipts/index'
+  get 'receipts/index/filter', to: 'receipts#filter'
   get 'receipts/:id', to: 'receipts#show', as: 'receiptshow'
   devise_for :retailers
   devise_for :users
