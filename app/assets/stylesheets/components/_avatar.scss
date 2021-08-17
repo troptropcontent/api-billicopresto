@@ -1,0 +1,35 @@
+.profile {
+  color: white;
+  text-align: center;
+  margin: 4vh 0 6vh 0;
+}
+
+.profile i {
+  margin-bottom: 20px;
+  font-size: 35px;
+}
+
+.profile h2 {
+  font-size: 18px;
+}
+
+.profile p {
+  font-size: 13px;
+  font-weight: 300;
+}
+
+.welcome {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -60%);
+}
+
+.avatar {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  padding: 15px;
+  border-radius: 50%;
+}

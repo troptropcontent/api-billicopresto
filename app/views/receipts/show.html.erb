@@ -1,2 +1,78 @@
-<h1>Receipts#show</h1>
-<p>Find me in app/views/receipts/show.html.erb</p>
+<%= link_to receipts_index_path do %>
+	<i class="fas fa-chevron-left back"></i>
+<% end %>
+
+<p class="button-left" data-bs-toggle="modal" data-bs-target="#exampleModal">Afficher le ticket de caisse complet</p>
+
+<div class="interupteur">
+	<div class="d-flex justify-content-between">
+		<p>Marquer comme à archiver</p>
+		<label class="switch">
+		  <input type="checkbox">
+		  <span class="slider round"></span>
+		</label>
+	</div>
+	<p class="notice">Marquer un ticket comme étant à archiver permet de conserver un ticket au-delà de la période après laquelle il est supprimé. <br> Pour modifier la durée cette période aller dans > Préférences.</p>
+</div>
+
+<div class="interupteur">
+	<div class="d-flex justify-content-between">
+		<p>Transférer dans Garanties</p>
+		<label class="switch">
+		  <input type="checkbox">
+		  <span class="slider round"></span>
+		</label>
+	</div>
+	<p class="notice">Un ticket de caisse est une preuve d'achat qui peut faire office de garantie. Transférez votre ticket dans l'onglet Garanties pour le conserver en tant que tel.</p>
+</div>
+
+<div class="button-left">
+	<a href="#">Budget</a>
+</div>
+
+<div class="button-left">
+	<a href="#">Transférer vers un autre compte</a>
+</div>
+
+<div class="button-left">
+	<a href="#" class="btn-red">Supprimer le ticket</a>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content">
+    	<i data-bs-dismiss="modal" class="fas fa-chevron-left modal-back"></i>
+      <div class="modal-body">
+      	<img class="avatar" src="https://www.logogallery.net/wp-content/uploads/2020/12/322151c924c90e3d557b1a51121c44e5.png" alt="logo-shop">
+        <p class="retailer-name"><%= @retailer.name %> </p>
+
+        <div class="tableau">
+        	<div class="tableau-cell">
+        		<p>ADRESSE : <span> <%= @retailer.full_address.upcase %>, <%= @retailer.zip_code %> <%= @retailer.city.upcase %> </span> </p>
+        	</div>
+        	<div class="tableau-cell">
+        		<p>LE : <span> <%= @receipt.created_at.strftime("%d.%m.%Y") %> à <%= @receipt.created_at.strftime("%H:%M:%S") %> </span> </p>
+        	</div>
+        	<div class="tableau-cell">
+        		<p>N° : <span> <%= @receipt.reference.upcase %> </span> </p>
+        	</div>
+        	<div class="tableau-cell last-line">
+        		<p>MONTANT TOTAL : <span> <%= @receipt.amount_including_taxes_cent %>€ </span> </p>
+        	</div>
+        </div>
+
+        <div class="tableau">
+        	<% @receipt.receipt_lines.each do |line| %>
+        		<div class="d-flex justify-content-between tableau-cell-receipt">
+			  		<p> <%= line.quantity %> </p> 
+			  		<p class="item"> <%= line.item.product.name.upcase %> </p> 
+			  		<p> <%= line.unit_price_cent %> €</p> 
+			  	</div>
+		  <% end %>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

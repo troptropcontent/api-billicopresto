@@ -25,7 +25,7 @@ number_of_devise_entity = 20
 ap I18n.t 'seed.reseting_model_database', model: Product.name
 Product.delete_all
 ap I18n.t 'seed.creation_of_seed', model: Product.name
-product_base = CSV.parse(File.open('/Users/tom/troptropcontent/api-billicopresto/db/seed_base_product.csv'))
+product_base = CSV.parse(File.open('/Users/ASF/code/agathesf/api-billicopresto/db/seed_base_product.csv'))
 product_base.each do |product|
 	new_product = Product.create!(name: product[0], kind: product[1] )
 	I18n.t 'seed.products.product_created', name: new_product.name, kind: new_product.kind
@@ -103,7 +103,7 @@ Retailer.all.each do |retailer|
 				avaialble_items = new_receipt.available_items
 				random_item = avaialble_items.sample
 				random_quantity = (1..10).to_a.sample
-				random_unit_price = (99..10000).to_a.sample
+				random_unit_price = (1..100).to_a.sample
 				taxe_rate = 20
 				new_receipt_line = new_receipt.receipt_lines.create!(
 					quantity: random_quantity,

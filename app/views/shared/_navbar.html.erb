@@ -1,0 +1,30 @@
+<%  def display
+      if params[:action] == 'show'
+      	'display: none !important'
+      elsif user_signed_in? 
+        'display: flex !important'
+      else
+        'display: none !important'
+      end 
+    end  
+%>
+
+<div class="navbar d-flex" style="<%=display%>">
+	<%= image_tag "logo-bylo.svg", alt: "bylo logo", class: "logo-navbar"%>
+	<%= link_to root_path do %>
+		<i class="far fa-user" id="dashboard"></i>
+	<% end %>
+
+	<% if params[:action] == 'index' %>
+		<div class="searchbar d-flex">
+			<i class="fas fa-sliders-h"></i>
+			<p class="tag">MONTANT MIN. 1€</p>
+			<p class="tag">UNIQUEMENT CE MOIS-CI</p>
+			<i class="fas fa-search"></i>
+		</div>
+	<% end %>
+
+	<div style="<%= 'border-radius: 0%; bottom: 0%;' if params[:action] == 'index'%>" class="anim-navbar">
+	</div>
+
+</div>

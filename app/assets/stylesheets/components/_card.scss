@@ -1,0 +1,46 @@
+.card {
+	padding: 10px 10px 10px 40px;
+	text-decoration: none !important;
+	color: grey;
+	border: 0px solid white;
+	border-bottom: 1px solid lightgrey;
+	transition: background-color 0.3s ease-in;
+
+}
+
+.card:active {
+	background-color: lightgray;
+}
+
+.receipt-middle-line {
+	justify-content: space-between;
+	font-size: 18px;
+	font-weight: 500;
+	vertical-align: middle;
+	color: black;
+}
+
+#retailer {
+	flex-grow: 1;
+	white-space: nowrap;
+    overflow: hidden;
+  	text-overflow: ellipsis;
+}
+
+#price {
+	padding: 0px 20px;
+}
+
+.receipt-middle-line i {
+	font-size: 25px;
+	color: lightgray;
+}
+
+.date {
+	padding: 10px 10px 10px 40px;
+	color: $blue;
+	font-size: 18px;
+	padding-bottom: 20px;
+	border-bottom: lightgray solid 1px;
+	margin: 0 !important;
+}
