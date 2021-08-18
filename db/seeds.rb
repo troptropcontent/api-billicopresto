@@ -95,7 +95,7 @@ Retailer.all.each do |retailer|
 		random_number_of_receipts = (1..10).to_a.sample
 		random_number_of_receipts.times do
 			random_user = User.all.sample
-			new_receipt = new_till.receipts.create!(reference: next_receipt_reference(retailer), user: random_user)
+			new_receipt = new_till.receipts.create!(reference: next_receipt_reference(retailer), user: random_user, created_at: rand(1.years.ago..0.years.ago))
 			I18n.t 'seed.receipts.receipt_created', retailer: retailer.name, reference: new_receipt.reference
 			random_number_of_lines = (1..10).to_a.sample
 			random_number_of_lines.times do
