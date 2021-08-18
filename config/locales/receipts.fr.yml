@@ -7,10 +7,10 @@ fr:
         archived: Archivé
         by_type: Par type
       date:
+        on_date: Le
         by_date: Par date
         before: Avant le
         after: Aprés le
-        on: Le
       retailer:
         by_retailer: Par magasin
         placeholder: Nom de l'enseigne
