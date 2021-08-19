@@ -16,7 +16,9 @@
 
 	<div class="profile">
 		<i class="far fa-user"></i>
+		<% if @user.first_name != nil %>
 		<h2><%= @user.first_name %> <%= @user.last_name.upcase %> </h2>
+		<% end %>
 	</div>
 
 	<div class="button-group">
