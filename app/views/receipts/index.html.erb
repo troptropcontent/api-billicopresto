@@ -8,7 +8,7 @@
 			  			<p> <%= receipt.created_at.strftime("%d.%m.%Y") %></p>
 			  			<div class="d-flex receipt-middle-line">
 			  				<p id="retailer"><%= receipt.till.retailer.name.upcase %>, <%= receipt.till.retailer.city.upcase %></p>
-			  				<p id="price"><%= receipt.amount_including_taxes_cent %>€</p>
+			  				<p id="price"><%= receipt.amount_including_taxes.amount %>€</p>
 			  				<i class="fas fa-chevron-right"></i>
 			  			</div>
 			  			<p>n°<%= receipt.reference %></p>
