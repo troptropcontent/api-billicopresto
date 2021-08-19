@@ -5,6 +5,8 @@ Rails.application.routes.draw do
   get 'receipts/index'
   get 'receipts/:id', to: 'receipts#show', as: 'receiptshow'
   devise_for :retailers
-  devise_for :users
+  devise_for :users,
+              path: '',
+              path_names: {sign_in: 'login', sign_up: 'signup', edit: 'profile'}
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

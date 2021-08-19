@@ -104,6 +104,10 @@ input[type=checkbox]{
 	text-transform: uppercase;
 }
 
+.field_with_hint {
+	flex-direction: column;
+}
+
 .hint {
 	color: white;
 	font-size: 10px;
