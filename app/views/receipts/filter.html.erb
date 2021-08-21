@@ -4,13 +4,13 @@
       <%= I18n.t('receipts.filter.date.by_date') %>
     </div>
     <div class="index_filter_input">
-      <%= form.radio_button :filter_date_type, "before" %>
-      <%= form.label :filter_date_type_before, I18n.t('receipts.filter.date.before') %>
-      <%= form.radio_button :filter_date_type, "on_date" %>
-      <%= form.label :filter_date_type_on_date, I18n.t('receipts.filter.date.on_date') %>
-      <%= form.radio_button :filter_date_type, "after" %>
-      <%= form.label :filter_date_type_after, I18n.t('receipts.filter.date.after') %>
-      <%= form.date_field :filter_date_value %>
+      <%= form.radio_button "filter_params[date_operator]", "less" %>
+      <%= form.label :date_less, I18n.t('receipts.filter.date.before') %>
+      <%= form.radio_button "filter_params[date_operator]", "" %>
+      <%= form.label :date, I18n.t('receipts.filter.date.on_date') %>
+      <%= form.radio_button "filter_params[date_operator]", "more" %>
+      <%= form.label :date_more, I18n.t('receipts.filter.date.after') %>
+      <%= form.date_field "filter_params[date]" %>
     </div>
   </div>
 
@@ -52,13 +52,13 @@
       <%= I18n.t('receipts.filter.amount.by_amount') %>
     </div>
     <div class="index_filter_input">
-      <%= form.radio_button :filter_type_amount, "below" %>
+      <%= form.radio_button "filter_params[amount_including_taxes_cent_operator]", "less" %>
       <%= form.label :filter_type_amount_below, I18n.t('receipts.filter.amount.below') %>
-      <%= form.radio_button :filter_type_amount, "equal" %>
+      <%= form.radio_button "filter_params[amount_including_taxes_cent_operator]", "" %>
       <%= form.label :filter_type_amount_equal, I18n.t('receipts.filter.amount.equal') %>
-      <%= form.radio_button :filter_type_amount, "above" %>
+      <%= form.radio_button "filter_params[amount_including_taxes_cent_operator]", "more" %>
       <%= form.label :filter_type_amount_above, I18n.t('receipts.filter.amount.above') %>
-      <%= form.number_field :filter_amount_value, in: 1.0..20.0, step: 0.5 %>
+      <%= form.number_field "filter_params[amount_including_taxes_cent]" , in: 1.0..20.0, step: 0.5 %>
     </div>
   </div>
   
