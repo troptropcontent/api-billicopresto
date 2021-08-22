@@ -3,7 +3,7 @@ class ReceiptsController < ApplicationController
   load_and_authorize_resource
   FIELD_FILTER_WHITELIST = [
     :date, 
-    :amount_including_taxes_cent
+    :amount_including_taxes
   ]
 
   def index
