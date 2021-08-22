@@ -12,23 +12,13 @@ class FilterService
 
   def filter!
     @filters = FilterParamsWhitelistService.new(@filter_params, @field_filter_whitelist).call!
-    add_operators
+    @filters = FilterParamsMapperService.new(@filters, @filter_params).call!
     classic_filter
     custom_filter
     @filtered_collection
   end
 
   private
-
-  def add_operators
-    filter_operators = @filter_params.select{|k,v| k.end_with?("_operator") }
-    filter_operators.each do |filter_operator, value|
-      field = filter_operator.delete_suffix("_operator")
-      next unless @filters[field]
-      @filters["#{field}_#{value}"] = @filters[field]
-      @filters.delete(field)
-    end
-  end
 
   def custom_filter
     not_filter 
@@ -38,19 +28,16 @@ class FilterService
 
   def classic_filter
     return unless classic_filters = @filters.reject{|filter| filter.end_with?(*OPERATOR_SUFFIX_WHITELIST)}.presence
-    byebug
     @filtered_collection = @filtered_collection.where(classic_filters)
   end
 
   def not_filter
     return unless not_filters = @filters.select{|filter| filter.end_with?("_not")}.presence
-    byebug
     @filtered_collection = @filtered_collection.where.not(not_filters.transform_keys { |k| k.delete_suffix("_not") })
   end
 
   def less_filter
     return unless less_filters = @filters.select{|filter| filter.end_with?("_less")}.presence
-    byebug
     less_filters.each do |field, value|
       @filtered_collection = @filtered_collection.where("#{field.delete_suffix("_less")} < ?", value)
     end
