@@ -1,5 +1,5 @@
 <%  def display
-      if params[:action] == 'show'
+      if params[:action] == 'show' || params[:action] == 'edit'
       	'display: none !important'
       elsif user_signed_in? 
         'display: flex !important'
