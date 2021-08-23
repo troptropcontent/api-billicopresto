@@ -25,9 +25,6 @@ gem 'jbuilder', '~> 2.7'
 #faker for seed
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
-#factory_bot for specs
-gem "factory_bot_rails"
-
 #authentification
 
 gem 'devise'
@@ -79,6 +76,8 @@ group :development do
   gem 'listen', '~> 3.3'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  #factory_bot for specs
+  gem "factory_bot_rails"
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
