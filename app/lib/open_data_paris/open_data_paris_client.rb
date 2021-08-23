@@ -2,7 +2,8 @@
 
 require "httparty"
 
-class OpenDataParisClient
+class OpenDataParis::OpenDataParisClient
+
   HOST = "https://opendata.paris.fr"
 
   def self.fetch_grocery_store(rows)
