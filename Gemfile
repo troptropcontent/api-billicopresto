@@ -26,7 +26,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
 
 #factory_bot for specs
-gem 'factory_bot'
+gem "factory_bot_rails"
+
 #authentification
 
 gem 'devise'
