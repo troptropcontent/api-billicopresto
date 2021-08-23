@@ -1,6 +1,6 @@
 require "./app/lib/open_data_paris/open_data_paris_client"
 
-grocery_store_database ||= OpenDataParisClient.fetch_grocery_store(50)
+grocery_store_database ||= OpenDataParis::OpenDataParisClient.fetch_grocery_store(50)
 
 def next_receipt_reference(retailer)
 	retailer_acronym = I18n.transliterate(retailer.name).upcase.gsub(" ","")[0..3]
