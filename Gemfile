@@ -22,15 +22,48 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
+#faker for seed
+gem 'faker', :git => 'https://github.com/faker-ruby/faker.git', :branch => 'master'
+
+#authentification
+gem 'devise'
+
+#money
+gem 'money-rails', '~>1.12'
+
+#authorisation
+gem 'cancancan'
+
+#serializer
+gem 'blueprinter', '~> 0.25.3'
+
+#awesom_print
+gem "awesome_print"
+
+#font-awesome
+gem 'font-awesome-sass'
+
+#simple-form
+gem 'simple_form'
+
+#autoprefixer
+gem 'autoprefixer-rails'
+
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.4', require: false
 
+#httparty
+gem 'httparty', '~> 0.18.1'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  #rspec
+  gem 'rspec-rails', '~> 5.0.0'
 end
 
 group :development do

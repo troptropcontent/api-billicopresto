@@ -1,0 +1,27 @@
+<%  def display
+      if user_signed_in? 
+        'display: flex !important'
+      else
+        'display: none !important'
+      end 
+    end  
+%>
+
+<div class="footer d-flex" style="<%= display %> ">
+	<%= link_to receipts_index_path do %>
+		<i class="fas fa-chart-pie" id="budget"></i>
+	<% end %>
+	<%= link_to receipts_index_path do %>
+		<i class="far fa-list-alt" id="receipts"></i>
+	<% end %>
+	<%= link_to receipts_index_path do %>
+		<i class="fas fa-qrcode" id="scan"></i>
+	<% end %>
+	<%= link_to receipts_index_path do %>
+		<i class="fas fa-percent" id="promo"></i>
+	<% end %>
+	<%= link_to receipts_index_path do %>
+		<i class="fas fa-certificate" id="warranties"></i>
+	<% end %>
+</div>
+

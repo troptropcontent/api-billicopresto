@@ -1,0 +1,43 @@
+// Graphical variables
+@import "config/fonts";
+@import "config/colors";
+@import "config/bootstrap_variables";
+
+// External libraries
+@import "bootstrap/scss/bootstrap";
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+// Your CSS partials
+@import "components/index";
+@import "pages/index";
+
+/*///////// GLOBAL /////////*/
+
+body {
+	background-color: $white;
+	width: 100vw;
+}
+
+h1, h2, h3, h4, p, a {
+	font-family: "Poppins" !important;
+	margin-bottom: 0.1rem !important;
+	text-decoration: none !important;
+}
+
+/* Add JS to : */
+.active {
+	color: #2340C9 !important;
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}

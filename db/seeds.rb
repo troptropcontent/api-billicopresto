@@ -1,7 +1,128 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+require "./app/lib/open_data_paris/open_data_paris_client"
+
+grocery_store_database ||= OpenDataParisClient.fetch_grocery_store(50)
+
+def next_receipt_reference(retailer)
+	retailer_acronym = I18n.transliterate(retailer.name).upcase.gsub(" ","")[0..3]
+	last_id = retailer.receipts.last&.id || 0
+	next_available_id = last_id + 1
+	number_of_zeros = 5 - next_available_id.to_s.length
+	"#{retailer_acronym}#{"0"*number_of_zeros}#{next_available_id}"
+end
+
+def random_address(grocery_store_database)
+	random_entity = grocery_store_database.sample
+	data = random_entity["fields"]
+	address = {
+	full_address: data["adresse"],
+	zip_code: data["code_postal"],
+	city: "Paris",
+	}
+end
+
+number_of_devise_entity = 20
+
+ap I18n.t 'seed.reseting_model_database', model: Product.name
+Product.delete_all
+ap I18n.t 'seed.creation_of_seed', model: Product.name
+product_base = CSV.parse(File.open('db/seed_base_product.csv'))
+product_base.each do |product|
+	new_product = Product.create!(name: product[0], kind: product[1] )
+	I18n.t 'seed.products.product_created', name: new_product.name, kind: new_product.kind
+end
+
+ap I18n.t 'seed.reseting_model_database', model: Retailer.name
+Retailer.delete_all
+ap I18n.t 'seed.creation_of_many', number: number_of_devise_entity, model: Retailer.name
+grocery_store_database.each do |grocery_store|
+	data = grocery_store["fields"]
+	next unless data["mail"]
+	ap I18n.t 'seed.creation_of_one', model: Retailer.name
+	retailer = Retailer.create!(name: data["nom_du_commerce"], 
+		email: data["mail"],
+		full_address: data["adresse"], 
+		zip_code: data["code_postal"],
+		city: "Paris",
+		password: "Test.123", 
+		password_confirmation: "Test.123"
+		)
+	ap I18n.t 'seed.retailers.retailer_created', name: retailer.name, full_address: retailer.full_address, zip_code: retailer.zip_code, city: retailer.city, email: retailer.email
+	ap I18n.t 'seed.reseting_model_database', model: Item.name
+	retailer.items.delete_all
+	ap I18n.t 'seed.creation_of_seed', model: Item.name
+	random_number_of_item = (10..20).to_a.sample
+	catalogue = Product.all.sample(random_number_of_item)
+	catalogue.each do |product| 
+		ap I18n.t 'seed.creation_of_one_for', model: Item.name, parent_model: retailer.class.name, parent_model_name: retailer.name 
+		retailer.items.create!(product: product)
+		ap I18n.t 'seed.items.item_created', retailer_name: retailer.name, product_name: product.name
+	end
+	break if Retailer.count == number_of_devise_entity
+end
+
+ap I18n.t 'seed.reseting_model_database', model: User.name
+User.delete_all
+ap I18n.t 'seed.creation_of_many', number: number_of_devise_entity, model: User.name
+
+number_of_entity_created = 0
+while number_of_entity_created <= number_of_devise_entity do
+	first_name =  Faker::Name.first_name
+	last_name = Faker::Name.last_name
+	address = random_address(grocery_store_database)
+	user = User.create(
+		email: I18n.transliterate("#{first_name}.#{last_name}@example.com"),
+		first_name: first_name,
+		last_name: last_name,
+		password: "Test.123", 
+		password_confirmation: "Test.123", 
+		birthday: rand(35.years.ago..20.years.ago), 
+		full_address: address[:full_address],
+		zip_code: address[:zip_code],
+		city: address[:city]
+		)
+	next unless user.valid?
+	ap I18n.t 'seed.users.user_created', first_name: user.first_name, last_name: user.last_name, email: user.email 
+	number_of_entity_created += 1
+end
+
+ap I18n.t 'seed.reseting_model_database', model: Receipt.name
+Receipt.delete_all
+ap I18n.t 'seed.creation_of_seed', model: Receipt.name
+Retailer.all.each do |retailer|
+	random_number_of_tills = (1..10).to_a.sample
+	random_number_of_tills.times do |n|
+		new_till = retailer.tills.create!(reference: n)
+		random_number_of_receipts = (1..10).to_a.sample
+		random_number_of_receipts.times do
+			random_user = User.all.sample
+			new_receipt = new_till.receipts.create!(reference: next_receipt_reference(retailer), user: random_user)
+			I18n.t 'seed.receipts.receipt_created', retailer: retailer.name, reference: new_receipt.reference
+			random_number_of_lines = (1..10).to_a.sample
+			random_number_of_lines.times do
+				ap I18n.t 'seed.creation_of_one_for', model: ReceiptLine.name, parent_model: new_till.retailer.class.name, parent_model_name: new_till.retailer.name
+				avaialble_items = new_receipt.available_items
+				random_item = avaialble_items.sample
+				random_quantity = (1..10).to_a.sample
+				random_unit_price = (1..100).to_a.sample
+				taxe_rate = 20
+				new_receipt_line = new_receipt.receipt_lines.create!(
+					quantity: random_quantity,
+					item: random_item,
+					unit_price_cent: random_unit_price,
+					taxe_rate: taxe_rate,
+					)
+				ap I18n.t 'seed.receipt_lines.receipt_line_created', retailer_name: new_till.retailer.name, quantity: random_quantity, unit_price: random_unit_price, taxe_rate: taxe_rate, amount_including_taxes: new_receipt_line.amount_including_taxes_cent, product_name: random_item.product.name 
+			end
+		end
+	end
+end
+
+ap I18n.t 'seed.seed_result', model: User.name, count: User.all.count
+ap I18n.t 'seed.seed_result', model: Product.name, count: Product.all.count
+ap I18n.t 'seed.seed_result', model: Retailer.name, count: Retailer.all.count
+ap I18n.t 'seed.seed_result', model: Item.name, count: Item.all.count
+ap I18n.t 'seed.seed_result', model: Till.name, count: Till.all.count
+ap I18n.t 'seed.seed_result', model: Receipt.name, count: Receipt.all.count
+ap I18n.t 'seed.seed_result', model: ReceiptLine.name, count: ReceiptLine.all.count
+
+

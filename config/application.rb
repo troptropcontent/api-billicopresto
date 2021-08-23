@@ -1,4 +1,4 @@
-require_relative "boot"
+  require_relative "boot"
 
 require "rails"
 # Pick the frameworks you want:
@@ -31,6 +31,10 @@ module ApiBillicopresto
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+
+    config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}')]
+    config.i18n.default_locale = :fr
+    config.i18n.fallbacks = [:en]
 
     # Don't generate system test files.
     config.generators.system_tests = nil
