@@ -58,7 +58,7 @@
         		<p>N° : <span> <%= @receipt.reference.upcase %> </span> </p>
         	</div>
         	<div class="tableau-cell last-line">
-        		<p>MONTANT TOTAL : <span> <%= @receipt.amount_including_taxes.amount %>€ </span> </p>
+        		<p>MONTANT TOTAL : <span> <%= @receipt.amount_including_taxes.amount %> € </span> </p>
         	</div>
         </div>
 
@@ -69,7 +69,10 @@
 			  		<p class="item"> <%= line.item.product.name.upcase %> </p> 
 			  		<p> <%= line.unit_price.amount %> €</p> 
 			  	</div>
-		  <% end %>
+            <% end %>
+            <div class="tableau-cell last-line thanks">
+              <p>Toute l'équipe <%= @retailer.name %> vous remercie pour votre visite ! À bientot 🙂</p>
+            </div>
         </div>
 
       </div>
