@@ -1,6 +1,6 @@
 <% if @receipts_ordered.length == 0 %>
 
-	<p class="card receipt-info receipt-middle-line">You have no ticket yet</p>
+	<p class="p-3 text-center" style="color: grey; border-bottom: 1px solid lightgrey">You have no ticket yet</p>
 
 <% else %>
 	<% @receipts_ordered.sort.each do |year, receipts| %>
