@@ -33,7 +33,7 @@
       <%= I18n.t('receipts.filter.retailer.by_retailer') %>
     </div>
     <div class="index_filter_input">
-      <%= form.collection_check_boxes "filters[till.retailer]", @retailers, :id, :name %>
+      <%= form.collection_check_boxes "filters[till.retailer]", @retailers, :id, :name , include_hidden: false %>
     </div>
   </div>
 
@@ -42,7 +42,7 @@
       <%= I18n.t('receipts.filter.city.by_city') %>
     </div>
     <div class="index_filter_input">
-      <%= form.text_field :filter_city %>
+      <%= form.text_field "filters[retailer.city]" %>
     </div>
   </div>
 
