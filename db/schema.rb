@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_08_22_195631) do
+ActiveRecord::Schema.define(version: 2021_08_28_084155) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2021_08_22_195631) do
     t.bigint "till_id"
     t.string "reference"
     t.date "date"
+    t.integer "status", default: 0
     t.index ["till_id"], name: "index_receipts_on_till_id"
     t.index ["user_id"], name: "index_receipts_on_user_id"
   end
