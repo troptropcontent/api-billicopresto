@@ -33,7 +33,7 @@
       <%= I18n.t('receipts.filter.retailer.by_retailer') %>
     </div>
     <div class="index_filter_input">
-      <%= form.collection_check_boxes :filter_retailer, @retailers, :id, :name %>
+      <%= form.collection_check_boxes "filters[till.retailer]", @retailers, :id, :name %>
     </div>
   </div>
 

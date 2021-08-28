@@ -3,10 +3,12 @@ class ReceiptsController < ApplicationController
   load_and_authorize_resource
   FIELD_FILTER_WHITELIST = [
     :date, 
-    :amount_including_taxes
+    :amount_including_taxes, 
+    "till.retailer"
   ]
 
   def index
+    @receipts = @receipts.includes(:till) if filter_params["till.retailer"].compact_blank.presence
     @receipts = FilterService.new(@receipts,FIELD_FILTER_WHITELIST, filter_params).filter! if filter_params
     @receipts_ordered = @receipts.group_by { |t| t.created_at.beginning_of_year } 
     @receipts_ordered_month = @receipts.group_by { |t| t.created_at.beginning_of_month } 
