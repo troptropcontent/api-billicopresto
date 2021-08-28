@@ -16,15 +16,15 @@
 
   <div class="index_filter_type">
     <div class="index_filter_title">
-      <%= I18n.t('receipts.filter.type.by_type') %>
+      <%= I18n.t('receipts.filter.status.by_status') %>
     </div>
     <div class="index_filter_input">
-      <%= form.radio_button :filter_type_type, "all" %>
-      <%= form.label :filter_type_type_all, I18n.t('receipts.filter.type.all') %>
-      <%= form.radio_button :filter_type_type, "recent" %>
-      <%= form.label :filter_type_type_recent, I18n.t('receipts.filter.type.recent') %>
-      <%= form.radio_button :filter_type_type, "archived" %>
-      <%= form.label :filter_type_type_archived, I18n.t('receipts.filter.type.archived') %>
+      <%= form.radio_button "filters[status]", "active" %>
+      <%= form.label :filter_type_type_all, I18n.t('receipts.filter.status.active') %>
+      <%= form.radio_button "", "all" %>
+      <%= form.label :filter_type_type_recent, I18n.t('receipts.filter.status.all') %>
+      <%= form.radio_button "filters[status]", "archived" %>
+      <%= form.label :filter_type_type_archived, I18n.t('receipts.filter.status.archived') %>
     </div>
   </div>
 

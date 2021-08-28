@@ -1,11 +1,11 @@
 fr:
   receipts:
     filter:
-      type:
+      status:
         all: Tout
-        recent: Recent
+        active: Actif
         archived: Archivé
-        by_type: Par type
+        by_status: Par status
       date:
         on_date: Le
         by_date: Par date

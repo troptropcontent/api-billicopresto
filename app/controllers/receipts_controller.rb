@@ -5,7 +5,8 @@ class ReceiptsController < ApplicationController
     :date, 
     :amount_including_taxes, 
     "till.retailer",
-    "retailer.city"
+    "retailer.city",
+    :status
   ]
 
   def index
