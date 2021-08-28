@@ -4,13 +4,13 @@
       <%= I18n.t('receipts.filter.date.by_date') %>
     </div>
     <div class="index_filter_input">
-      <%= form.radio_button "filter_params[date_operator]", "less" %>
+      <%= form.radio_button "filters[date_operator]", "less" %>
       <%= form.label :date_less, I18n.t('receipts.filter.date.before') %>
-      <%= form.radio_button "filter_params[date_operator]", "" %>
+      <%= form.radio_button "filters[date_operator]", "" %>
       <%= form.label :date, I18n.t('receipts.filter.date.on_date') %>
-      <%= form.radio_button "filter_params[date_operator]", "more" %>
+      <%= form.radio_button "filters[date_operator]", "more" %>
       <%= form.label :date_more, I18n.t('receipts.filter.date.after') %>
-      <%= form.date_field "filter_params[date]" %>
+      <%= form.date_field "filters[date]" %>
     </div>
   </div>
 
@@ -52,13 +52,13 @@
       <%= I18n.t('receipts.filter.amount.by_amount') %>
     </div>
     <div class="index_filter_input">
-      <%= form.radio_button "filter_params[amount_including_taxes_operator]", "less" %>
+      <%= form.radio_button "filters[amount_including_taxes_operator]", "less" %>
       <%= form.label :filter_type_amount_below, I18n.t('receipts.filter.amount.below') %>
-      <%= form.radio_button "filter_params[amount_including_taxes_operator]", "" %>
+      <%= form.radio_button "filters[amount_including_taxes_operator]", "" %>
       <%= form.label :filter_type_amount_equal, I18n.t('receipts.filter.amount.equal') %>
-      <%= form.radio_button "filter_params[amount_including_taxes_operator]", "more" %>
+      <%= form.radio_button "filters[amount_including_taxes_operator]", "more" %>
       <%= form.label :filter_type_amount_above, I18n.t('receipts.filter.amount.above') %>
-      <%= form.number_field "filter_params[amount_including_taxes]" %>
+      <%= form.number_field "filters[amount_including_taxes]" %>
     </div>
   </div>
   

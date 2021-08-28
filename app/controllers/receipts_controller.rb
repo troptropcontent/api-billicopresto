@@ -26,6 +26,6 @@ class ReceiptsController < ApplicationController
   private
 
   def filter_params
-    params[:filter_params].compact_blank
+    params[:filters]&.compact_blank
   end
 end
