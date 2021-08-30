@@ -34,7 +34,7 @@
 	<a href="#">Transférer vers un autre compte</a>
 </div>
 
-<div class="button-left">
+<div class="button-left mb-5">
 	<a href="#" class="btn-red">Supprimer le ticket</a>
 </div>
 
@@ -43,7 +43,7 @@
   <div class="modal-dialog modal-fullscreen">
     <div class="modal-content">
     	<i data-bs-dismiss="modal" class="fas fa-chevron-left modal-back"></i>
-      <div class="modal-body">
+      <div class="modal-body mb-5">
       	<img class="avatar" src="https://www.logogallery.net/wp-content/uploads/2020/12/322151c924c90e3d557b1a51121c44e5.png" alt="logo-shop">
         <p class="retailer-name"><%= @retailer.name %> </p>
 
@@ -58,7 +58,7 @@
         		<p>N° : <span> <%= @receipt.reference.upcase %> </span> </p>
         	</div>
         	<div class="tableau-cell last-line">
-        		<p>MONTANT TOTAL : <span> <%= @receipt.amount_including_taxes_cent %>€ </span> </p>
+        		<p>MONTANT TOTAL : <span> <%= @receipt.amount_including_taxes.amount %> € </span> </p>
         	</div>
         </div>
 
@@ -67,9 +67,12 @@
         		<div class="d-flex justify-content-between tableau-cell-receipt">
 			  		<p> <%= line.quantity %> </p> 
 			  		<p class="item"> <%= line.item.product.name.upcase %> </p> 
-			  		<p> <%= line.unit_price_cent %> €</p> 
+			  		<p> <%= line.unit_price.amount %> €</p> 
 			  	</div>
-		  <% end %>
+            <% end %>
+            <div class="tableau-cell last-line thanks">
+              <p>Toute l'équipe <%= @retailer.name %> vous remercie pour votre visite ! À bientot 🙂</p>
+            </div>
         </div>
 
       </div>
