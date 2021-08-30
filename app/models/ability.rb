@@ -6,7 +6,7 @@ class Ability
   def initialize(user)
     case user.class.name
      when "User"
-      can [:read], Receipt, user: user
+      can [:read, :filter], Receipt, user: user
      when "Retailer"
     end
   end

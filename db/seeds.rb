@@ -1,6 +1,6 @@
 require "./app/lib/open_data_paris/open_data_paris_client"
 
-grocery_store_database ||= OpenDataParisClient.fetch_grocery_store(50)
+grocery_store_database ||= OpenDataParis::OpenDataParisClient.fetch_grocery_store(50)
 
 def next_receipt_reference(retailer)
 	retailer_acronym = I18n.transliterate(retailer.name).upcase.gsub(" ","")[0..3]
@@ -95,7 +95,7 @@ Retailer.all.each do |retailer|
 		random_number_of_receipts = (1..10).to_a.sample
 		random_number_of_receipts.times do
 			random_user = User.all.sample
-			new_receipt = new_till.receipts.create!(reference: next_receipt_reference(retailer), user: random_user)
+			new_receipt = new_till.receipts.create!(reference: next_receipt_reference(retailer), user: random_user, date: rand(1.years.ago..0.years.ago))
 			I18n.t 'seed.receipts.receipt_created', retailer: retailer.name, reference: new_receipt.reference
 			random_number_of_lines = (1..10).to_a.sample
 			random_number_of_lines.times do
