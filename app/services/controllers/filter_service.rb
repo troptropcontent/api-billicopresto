@@ -1,4 +1,4 @@
-class FilterService
+class Controllers::FilterService
   require_relative "filter_params_mapper_service"
   require_relative "filter_params_whitelist_service"
 
