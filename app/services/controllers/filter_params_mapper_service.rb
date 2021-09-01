@@ -1,4 +1,4 @@
-class FilterParamsMapperService
+class Controllers::FilterParamsMapperService
 
   MONEY_FIELDS = %w[
     unit_price
