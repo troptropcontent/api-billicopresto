@@ -5,6 +5,8 @@ class Receipt < ApplicationRecord
 
   monetize :amount_excluding_taxes_cent,:amount_including_taxes_cent,:amount_taxes_cent
 
+  enum status: {active: 0, archived: 1}
+
   after_commit :recompute_amounts!, 
                 if: Proc.new { saved_change_to_amount_excluding_taxes_cent? || saved_change_to_amount_taxes_cent? }
 
