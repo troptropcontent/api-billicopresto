@@ -1,0 +1,66 @@
+<%= form_with url: receipts_index_path, method: :get, class: 'index_filter_form' do |form| %>
+  <div class="index_filter_date">
+    <div class="index_filter_title">
+      <%= I18n.t('receipts.filter.date.by_date') %>
+    </div>
+    <div class="index_filter_input">
+      <%= form.radio_button "filters[date_operator]", "less" %>
+      <%= form.label :date_less, I18n.t('receipts.filter.date.before') %>
+      <%= form.radio_button "filters[date_operator]", "" %>
+      <%= form.label :date, I18n.t('receipts.filter.date.on_date') %>
+      <%= form.radio_button "filters[date_operator]", "more" %>
+      <%= form.label :date_more, I18n.t('receipts.filter.date.after') %>
+      <%= form.date_field "filters[date]" %>
+    </div>
+  </div>
+
+  <div class="index_filter_type">
+    <div class="index_filter_title">
+      <%= I18n.t('receipts.filter.status.by_status') %>
+    </div>
+    <div class="index_filter_input">
+      <%= form.radio_button "filters[status]", "active" %>
+      <%= form.label :filter_type_type_all, I18n.t('receipts.filter.status.active') %>
+      <%= form.radio_button "", "all" %>
+      <%= form.label :filter_type_type_recent, I18n.t('receipts.filter.status.all') %>
+      <%= form.radio_button "filters[status]", "archived" %>
+      <%= form.label :filter_type_type_archived, I18n.t('receipts.filter.status.archived') %>
+    </div>
+  </div>
+
+  <div class="index_filter_retailer">
+    <div class="index_filter_title">
+      <%= I18n.t('receipts.filter.retailer.by_retailer') %>
+    </div>
+    <div class="index_filter_input">
+      <%= form.collection_check_boxes "filters[till.retailer]", @retailers, :id, :name , include_hidden: false %>
+    </div>
+  </div>
+
+  <div class="index_filter_city">
+    <div class="index_filter_title">
+      <%= I18n.t('receipts.filter.city.by_city') %>
+    </div>
+    <div class="index_filter_input">
+      <%= form.text_field "filters[retailer.city]" %>
+    </div>
+  </div>
+
+
+  <div class="index_filter_amount">
+    <div class="index_filter_title">
+      <%= I18n.t('receipts.filter.amount.by_amount') %>
+    </div>
+    <div class="index_filter_input">
+      <%= form.radio_button "filters[amount_including_taxes_operator]", "less" %>
+      <%= form.label :filter_type_amount_below, I18n.t('receipts.filter.amount.below') %>
+      <%= form.radio_button "filters[amount_including_taxes_operator]", "" %>
+      <%= form.label :filter_type_amount_equal, I18n.t('receipts.filter.amount.equal') %>
+      <%= form.radio_button "filters[amount_including_taxes_operator]", "more" %>
+      <%= form.label :filter_type_amount_above, I18n.t('receipts.filter.amount.above') %>
+      <%= form.number_field "filters[amount_including_taxes]" %>
+    </div>
+  </div>
+  
+  <%= form.submit I18n.t('receipts.filter.submit') %>
+<% end %>
