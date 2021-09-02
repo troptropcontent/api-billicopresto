@@ -1,9 +1,13 @@
+<%= link_to receipts_index_path do %>
+  <i class="fas fa-chevron-left back"></i>
+<% end %>
+
 <div class="filter-form-wrapper">
   <%= form_with url: receipts_index_path, method: :get, class: 'index_filter_form' do |form| %>
     
     <!-- STATUS -->
 
-    <div class="index_filter_type py-4">
+    <div class="index_filter_type">
 
       <div class="index_filter_title py-3">
         <%= I18n.t('receipts.filter.status.by_status') %>
@@ -78,7 +82,7 @@
         <%= I18n.t('receipts.filter.city.by_city') %>
       </div>
       <div class="index_filter_input">
-        <%= form.text_field "filters[retailer.city]" %>
+        <%= form.text_field "filters[retailer.city]", placeholder: 'Paris' %>
       </div>
 
     </div>
@@ -111,7 +115,10 @@
           
         </div>
 
-        <%= form.number_field "filters[amount_including_taxes]", class: "pt-3" %>
+        <div class="d-flex">
+        <%= form.number_field "filters[amount_including_taxes]", placeholder: '0.00', class: "pt-3 legend" %> 
+        <label for="filters[amount_including_taxes]" class="price-label pt-3">€</label>
+        </div>
 
       </div>
     </div>

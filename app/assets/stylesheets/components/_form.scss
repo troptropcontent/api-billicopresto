@@ -120,7 +120,7 @@ input[type=checkbox]{
 
 .filter-form-wrapper {
 	height: 100%;
-	margin: 30px;
+	margin: 0 30px 30px 30px;
 }
 
 .filter-form-wrapper label {
@@ -130,7 +130,7 @@ input[type=checkbox]{
 	padding: 3px;
 }
 
-.index_filter_input{
+.index_filter_input {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -184,8 +184,16 @@ input[type=checkbox]{
 
 
 .index_filter_input input {
-	color: black;
-	border-bottom: 1px solid black;
+	color: gray;
+	border-bottom: 1px solid gray;
+	font-size: 12px;
+	opacity: 1;
+	text-transform: uppercase;
+	font-weight: 100;
+}
+
+.index_filter_input input::placeholder {
+	color: gray;
 }
 
 .index_filter_retailer .index_filter_input input {
@@ -220,7 +228,9 @@ input[type=checkbox]{
 }
 
 
-
+.price-label {
+	font-size: 16px !important;
+} 
 
 
 
