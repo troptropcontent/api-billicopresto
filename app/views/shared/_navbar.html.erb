@@ -1,5 +1,5 @@
 <%  def display
-      if params[:action] == 'show' || params[:action] == 'edit'
+      if params[:action] == 'show' || params[:action] == 'edit' || params[:action] == 'filter'
       	'display: none !important'
       elsif user_signed_in? 
         'display: flex !important'
@@ -17,13 +17,13 @@
 
 	<% if params[:action] == 'index' %>
 		<div class="searchbar d-flex">
-			
+			<div></div>
 			<%= link_to receipts_index_filter_path do %>
 			  <i class="fas fa-sliders-h"></i>
 			<% end %>
-			<p class="tag">MONTANT MIN. 1€</p>
-			<p class="tag">UNIQUEMENT CE MOIS-CI</p>
-			<i class="fas fa-search"></i>
+<!-- 			<p class="tag">MONTANT MIN. 1€</p>
+			<p class="tag">UNIQUEMENT CE MOIS-CI</p> -->
+			<!-- <i class="fas fa-search"></i> -->
 		</div>
 	<% end %>
 
