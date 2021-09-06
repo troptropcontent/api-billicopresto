@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_06_141611) do
+ActiveRecord::Schema.define(version: 2021_09_06_200539) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -117,6 +117,8 @@ ActiveRecord::Schema.define(version: 2021_09_06_141611) do
     t.bigint "voucher_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.boolean "used"
+    t.datetime "used_at"
     t.index ["user_id"], name: "index_voucher_targets_on_user_id"
     t.index ["voucher_id"], name: "index_voucher_targets_on_voucher_id"
   end
