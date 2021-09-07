@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_09_06_202838) do
+ActiveRecord::Schema.define(version: 2021_09_07_194637) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -131,6 +131,8 @@ ActiveRecord::Schema.define(version: 2021_09_06_202838) do
     t.datetime "updated_at", precision: 6, null: false
     t.date "start_date"
     t.date "end_date"
+    t.bigint "item_id", null: false
+    t.index ["item_id"], name: "index_vouchers_on_item_id"
     t.index ["retailer_id"], name: "index_vouchers_on_retailer_id"
   end
 
@@ -142,5 +144,6 @@ ActiveRecord::Schema.define(version: 2021_09_06_202838) do
   add_foreign_key "tills", "retailers"
   add_foreign_key "voucher_targets", "users"
   add_foreign_key "voucher_targets", "vouchers"
+  add_foreign_key "vouchers", "items"
   add_foreign_key "vouchers", "retailers"
 end
