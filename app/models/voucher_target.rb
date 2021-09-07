@@ -1,6 +1,6 @@
 class VoucherTarget < ApplicationRecord
   belongs_to :user
-  belongs_to :target
+  belongs_to :voucher
 
   validates :user_id, uniqueness: { scope: :voucher_id }
 end
