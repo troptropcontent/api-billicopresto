@@ -1,0 +1,112 @@
+.banner {
+  background-image: url("https://source.unsplash.com/random/1000x500");
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 200px 180px;
+      height: 100vh;
+}
+
+.banner h1 {
+  font-size: 32px;
+}
+
+.banner p {
+  font-size: 20px;
+  opacity: 0.6;
+}
+
+.banner a {
+  font-size: 16px;
+  font-weight: light;
+}
+
+////////CONTAINER///////
+.home-container {
+  text-align: center;
+  margin: 0 auto;
+  padding: 100px 0px;
+}
+
+/////////BTN////////////
+.btn-treehouse {
+  color: $blue;
+  padding: 0px 36px;
+  line-height: 56px;
+  border-radius: 50px;
+  background: whitesmoke;
+  transition: background 0.3s ease;
+}
+
+.btn-treehouse:hover {
+  color: whitesmoke;
+  background: $blue;
+}
+
+////////CARDS/////////
+.home-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.white-card {
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  width: 200px;
+  margin: 0px 40px;
+  padding: 20px;
+}
+
+.white-card h3 {
+  font-size: 16px;
+}
+
+.white-card p {
+  font-size: 16px;
+  opacity: 0.5;
+}
+
+.white-card img{
+  height: 100px;
+  width: 100px;
+  object-fit: cover;
+}
+
+////////FOOTER////////
+
+.home-footer {
+  text-align: center;
+  padding: 60px;
+  background-color: #2c2b2b;
+  color: #6B6C6C;
+}
+
+.home-footer a {
+  color: #DADADA;
+  text-decoration: none;
+}
+
+.home-footer a:hover {
+  color: black;
+}
+
+i {
+  font-size: 30px;
+  color: #1EDD88;
+}
+
+.home-footer .fas {
+  font-size: 16px;
+  color: #BF0F12;
+}
+
+.list-inline {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.list-inline > li {
+  display: inline-block;
+  padding: 0px 10px;
+}
