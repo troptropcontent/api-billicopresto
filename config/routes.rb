@@ -10,4 +10,8 @@ Rails.application.routes.draw do
               path: '',
               path_names: {sign_in: 'login', sign_up: 'signup', edit: 'profile'}
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+
+  # LANDING-PAGE
+  get 'pages/home' , to: 'pages#home', as: 'welcome'
+
 end
