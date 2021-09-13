@@ -1,10 +1,44 @@
+//NAVBAR HOME
+.navbar-left {
+	    align-items: center;
+}
+
+.navbar-right {
+	    align-items: center;
+}
+
+.navbar-right a {
+	color: white !important;
+}
+
+.navbar-right p {
+	color: white !important;
+}
+
+.moto {
+	padding: 0 30px 10px 30px;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: white;
+}
+
+//BANNER
+
 .banner {
-  background-image: url("https://source.unsplash.com/random/1000x500");
-  background-size: cover;
-  background-position: center;
   color: white;
-  padding: 200px 180px;
-      height: 100vh;
+  height: 100vh;
+// clip-path: circle(75.3% at 60% 24%);
+	        display: grid;
+	        grid-template-columns: 1fr 1fr 1fr 1fr;
+	            align-items: center;
+	            padding: 5vw;
+	            grid-gap: 5vw;
+}
+
+.animate-banner {
+	    position: relative;
+	    grid-column: 2;
+	    display: inline-grid;
 }
 
 .banner h1 {
@@ -12,13 +46,25 @@
 }
 
 .banner p {
-  font-size: 20px;
-  opacity: 0.6;
+	font-size: 16px;
+    // width: 300px;
+    z-index: 100;
+        font-weight: 200;
 }
 
 .banner a {
-  font-size: 16px;
-  font-weight: light;
+      font-size: 16px;
+    margin: 30px 0;
+    text-align: center;
+}
+
+.banner img {
+	    height: 110vh;
+    position: absolute;
+    z-index: 101;
+        top: 0px;
+    left: 0px;
+    transform: translate(10%, -40%);
 }
 
 ////////CONTAINER///////
@@ -30,8 +76,9 @@
 
 /////////BTN////////////
 .btn-treehouse {
+	width: 100%;
   color: $blue;
-  padding: 0px 36px;
+  padding: 0px;
   line-height: 56px;
   border-radius: 50px;
   background: whitesmoke;
@@ -77,9 +124,7 @@
 
 .home-footer {
   text-align: center;
-  padding: 60px;
-  background-color: #2c2b2b;
-  color: #6B6C6C;
+  color: black;
 }
 
 .home-footer a {
@@ -93,12 +138,7 @@
 
 i {
   font-size: 30px;
-  color: #1EDD88;
-}
-
-.home-footer .fas {
-  font-size: 16px;
-  color: #BF0F12;
+  color: $blue;
 }
 
 .list-inline {
