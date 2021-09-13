@@ -7,6 +7,9 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
+
+      <!-- METTRE EN CONDITION : si le user != retailer -->
+
       <%= f.input :first_name,
                   required: true,
                   autofocus: true,
@@ -17,6 +20,9 @@
                   autofocus: true,
                   placeholder: 'nom',
                   input_html: { autocomplete: "last name" }%>
+
+      <!-- GLOBAL -->
+
       <%= f.input :email,
                   required: true,
                   placeholder: 'email',
