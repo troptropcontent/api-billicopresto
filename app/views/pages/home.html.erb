@@ -1,0 +1,113 @@
+<div class="banner" style="background: linear-gradient(-20deg, #ff9133, #2340C9, #2340C9);
+            background-size: 500vw 200vh;
+            animation: gradient 40s ease infinite;
+            height: 100vh; width: 100.2vw !important; overflow: hidden;">
+
+    <div class="animate-banner">
+    <p>Marre de perdre constamment vos tickets de caisse ? Où est votre preuve d'achat quand vous devez faire valoir votre garantie ? Les promotions ne sont jamais faites pour vous ? <br><br>Beaucoup de problèmes qui sont voués à disparaitre avec Bylo ! Une offre personnalisée pour les particuliers et les commerçants.</p>
+
+    <%= link_to "Rejoindre l'aventure", new_retailer_registration_path, class: "btn-treehouse", style: "z-index: 1000"%>
+
+  	<%= image_tag "home-mockup.png", alt: "blabla", class: "home-img" %>
+  	</div>
+</div>
+
+<!-- code a "How it works" section -->
+
+<div class="home-container">
+	<div class="why">
+
+		<h2>Pourquoi utiliser Bylo ? </h2>
+
+		<div class="why-content">
+
+			<div class="why-left">
+				<p>On s’est rendu compte qu’on avait des tickets de caisses qui trainaient partout et tout le temps. D’ailleurs je suis sur que si vous regardez dans votre sac à main, dans vos poches et portefeuille et je suis certain que vous en trouverez.</p> 
+
+				<p>Parce que rien qu’en france c’est plus de 12 milliards de tickets de caisses qui sont édités chaque année en France.</p>
+
+				<h6>Ce modèle n’est plus du tout viable !</h6>
+			</div>
+
+		</div>
+
+	</div>
+
+	<div class="how">
+
+		<h2 class="how-title">Comment ca marche ? </h2>
+
+		<section class="timeline">
+		  <ul>
+		    <li id="first-li">
+		      <div style="padding-top: 200px">
+		        <time>Scaner le QR code affiché en caisse</time> 
+		        <p>Après le payement, le client scan le QR code affiché en caisse afin de réccupérer son reçu détaillé, consultable sur l'application Bylo.</p>
+		        <%= image_tag "scan.gif", alt: "alttext", width: '500px', style: 'top: 120px; left: -410px;'%>
+		      </div>
+		    </li>
+		    <li>
+		      <div>
+		        <time>Centraliser vos données d'achat</time> 
+		        <p>Une fois sur l'application, tous les documents sont consulatables et accessibles à tout moment. Ils peuvent être archivés afin de conserver la garantie jusqu'à son expiration.</p>
+		        <%= image_tag "central.gif", alt: "alttext", width: '500px', style: 'top: -60px; right: -410px;'%>
+		      </div>
+		    </li>
+		    <li>
+		      <div>
+		        <time>Analyser et gérer votre consommation</time> 
+		        <p>Le client peut exploiter les données récoltées pour gérer son budget et avoir une vue d'ensemble sur sa consommation.</p>
+		        <%= image_tag "budget.gif", alt: "alttext", width: '500px', style: 'top: -60px; left: -410px;'%>
+		      </div>
+		    </li>
+		    <li>
+		      <div>
+		        <time>Connaître votre clientèle</time> 
+		        <p>Le commerce aura quant à lui accès à des données statistiques et anonymisées sur sa clientèle afin d'optimiser sa connaissance client.</p>
+		        <%= image_tag "connaitre.gif", alt: "alttext", width: '500px', style: 'top: -60px; right: -450px;'%>
+		      </div>
+		    </li>
+		    <li>
+		      <div>
+		        <time>Proposer des offres commerciales personalisées</time> 
+		        <p style="padding-bottom: 60px;">Le commerce pourra créer et diffuser depuis la platforme des offres promotionnelles personalisées afin de garantir aux clients, depuis l'application, une expérience sans spam et facile d'utilisation.</p>
+		        <%= image_tag "promo.gif", alt: "alttext", width: '500px', style: 'top: -60px; left: -520px;'%>
+		      </div>
+		    </li>
+		  </ul>
+		</section>
+
+	</div>
+
+	<div class="who">
+
+  		<h2>Qui sommes nous ? </h2>
+  	
+		<p>Marre de perdre constamment vos tickets de caisse ? Où est votre preuve d'achat quand vous devez faire valoir votre garantie ? Les promotions ne sont jamais faites pour vous ? <br><br>Beaucoup de problèmes qui sont voués à disparaitre avec Bylo ! Une offre personnalisée pour les particuliers et les commerçants.</p>
+
+	</div>
+
+</div>
+
+<!-- code a footer -->
+
+<div class="home-footer">
+	  		<p> Restez informés 🤙 </p>
+  <ul class="list-inline">
+      <li>
+        <a href="#" target="_blank">
+          <i class="fab fa-instagram-square"></i> <!-- Insta -->
+        </a>
+      </li>
+      <li>
+        <a href="#" target="_blank">
+          <i class="fab fa-linkedin"></i> <!-- Linkedin -->
+        </a>
+      </li>
+      <li>
+        <a href="#" target="_blank">
+          <i class="fab fa-facebook-square"></i> <!-- Medium -->
+        </a>
+      </li>
+    </ul>
+</div>

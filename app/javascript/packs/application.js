@@ -14,8 +14,10 @@ Turbolinks.start()
 ActiveStorage.start()
 
 import { changeLinkColor } from '../components/change_link_color.js'
+import { timelineInit } from '../components/timeline.js';
 
 
 document.addEventListener('turbolinks:load', () => {
+	timelineInit();
   changeLinkColor();
 });
