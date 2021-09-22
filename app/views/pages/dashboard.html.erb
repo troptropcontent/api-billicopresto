@@ -1,4 +1,37 @@
-<% if @user == nil %>
+<% if current_retailer != nil %>
+
+	<div class="profile">
+		<i class="far fa-user"></i>
+		<% if current_retailer.name != nil %>
+		<h2><%= current_retailer.name %> </h2>
+		<% end %>
+	</div>
+
+	<div class="button-group">
+		<div class="button">
+			<%= link_to "Compléter mon profil", edit_user_registration_path %>
+		</div>
+		<div class="button">
+			<p>Gérer mes moyens de paiement</p>
+		</div>
+		<div class="button">
+			<p>Ajouter et gérer un compte</p>
+		</div>
+		<div class="button">
+			<p>Préférences</p>
+		</div>
+		<div class="button">
+			<p>Sécurité</p>
+		</div>
+	</div>
+
+	<div class="button-group">
+		<div class="button">
+			<%= link_to "Déconnexion", destroy_user_session_path, method: :delete, class: "btn-red" %>
+		</div>
+	</div>
+
+<% elsif @user == nil %>
 
 	<div class="welcome profile">
 
@@ -11,7 +44,7 @@
 		<%= link_to "Devenez un bylower 🤙", new_user_registration_path, class: "rounded-button" %>
 		<%= link_to "J'ai déjà un compte 😎", new_user_session_path, class: "rounded-button" %>
 	</div>
-
+	
 <% else %>
 
 	<div class="profile">
