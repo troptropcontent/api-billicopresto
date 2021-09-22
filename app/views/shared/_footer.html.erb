@@ -1,5 +1,7 @@
 <%  def display
-      if user_signed_in? 
+	  if params[:action] == 'home'
+		'display: none !important'
+      elsif user_signed_in? 
         'display: flex !important'
       else
         'display: none !important'

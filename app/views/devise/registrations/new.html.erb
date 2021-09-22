@@ -7,16 +7,22 @@
     <%= f.error_notification %>
 
     <div class="form-inputs">
-      <%= f.input :first_name,
-                  required: true,
-                  autofocus: true,
-                  placeholder: 'prénom',
-                  input_html: { autocomplete: "first name" }%>
-      <%= f.input :last_name,
-                  required: true,
-                  autofocus: true,
-                  placeholder: 'nom',
-                  input_html: { autocomplete: "last name" }%>
+
+      <!-- METTRE EN CONDITION : si le user != retailer -->
+      <% if resource_name != :retailer %>
+        <%= f.input :first_name,
+                    required: true,
+                    autofocus: true,
+                    placeholder: 'prénom',
+                    input_html: { autocomplete: "first name" }%>
+        <%= f.input :last_name,
+                    required: true,
+                    autofocus: true,
+                    placeholder: 'nom',
+                    input_html: { autocomplete: "last name" }%>
+      <% end %>
+      <!-- GLOBAL -->
+
       <%= f.input :email,
                   required: true,
                   placeholder: 'email',
