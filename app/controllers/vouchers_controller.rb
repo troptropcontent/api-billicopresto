@@ -5,13 +5,19 @@ class VouchersController < ApplicationController
   authorize_resource only: :create
 
   FIELD_FILTER_WHITELIST = [
-    
+    'items.product_id'
   ]
 
   def index
+    @vouchers = @vouchers.joins(:item) if filter_params&['items.product_id']
     @vouchers =  Controllers::FilterService.new(@vouchers,FIELD_FILTER_WHITELIST, filter_params).filter! if filter_params
-
   end
+
+  def filter
+    @products = Product.joins(:items).where(items: {retailer: current_retailer})
+  end
+  
+  #WARNING : Many new and create 
 
   def new 
     @products = current_retailer.products
