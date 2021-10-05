@@ -35,6 +35,8 @@ class VouchersController < ApplicationController
   end
 
   def new
+    @products = current_retailer.products
+    @product_sold = Product.joins(items: :receipt_lines).where(items: {retailer: current_retailer}).distinct
     @voucher = Voucher.new    
   end
 
