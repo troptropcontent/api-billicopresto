@@ -24,14 +24,13 @@ Rails.application.routes.draw do
 
     #########
 
-<<<<<<< HEAD
-  get 'vouchers/filter', to: 'vouchers#filter', as: 'vouchers_filter'
-=======
+# <<<<<<< HEAD
+#   get 'vouchers/filter', to: 'vouchers#filter', as: 'vouchers_filter'
+# =======
   scope module: 'vouchers' do
     get 'vouchers/filter', to: 'vouchers#filter', as: 'vouchers_filter'
-    resources :vouchers, only: [:index, :show, :create, :new]
+    resources :vouchers, only: [:index, :show, :new, :create]
   end
->>>>>>> 9944f051ab284a114407a169a41008824711a933
 
   # root "articles#index"
 
