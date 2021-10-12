@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :receipts
-
+  enum gender: [ :undefined, :male, :female ]
   def age
     Date.current.year - birthday.year
   end
