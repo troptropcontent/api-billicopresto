@@ -16,6 +16,11 @@ module Vouchers
       render 'vouchers/index'
     end
 
+    def show
+      @voucher
+      render 'vouchers/show'
+    end
+
     def filter
       @products = Product.joins(:items).where(items: {retailer: current_retailer})
     end
@@ -41,9 +46,6 @@ module Vouchers
       redirect_to voucher_path(@voucher)
     end
 
-    def show
-      @voucher
-    end
 
     # def new
     #   @voucher = Voucher.new    
@@ -107,7 +109,6 @@ module Vouchers
 
     def map_money_field(params)
       model_attributes = Vouchers::Voucher.new.attributes.keys
-
       return params unless money_params = params.select do|k,v| 
         model_attributes.include?("#{k}_cents")
       end
@@ -116,13 +117,12 @@ module Vouchers
         params["#{key}_cents"] = value.to_f*100.to_i
         params.delete(key)
       end
-
-      params 
     end
 
     def statistic_service
       Retailers::Statistics::StatisticService.new(current_retailer)
     end
+
   end
 end
 

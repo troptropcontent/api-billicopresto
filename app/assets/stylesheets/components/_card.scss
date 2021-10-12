@@ -245,13 +245,11 @@ color:#ffffff;
 	& p.number-detail {
 		font-size: 46px;
 	}
-	&:hover {
-		background: rgba(245, 245, 245, .9);
-		& p {
-			color: $blue;
-		}
-	}
 	& img {
 		    height: 70px;
 	}
+}
+
+input#start_date, input#end_date {
+	font-size: 12px;
 }

@@ -34,11 +34,9 @@ Rails.application.routes.draw do
   #   render :builder_root
   # end
 
-  #########
-
-  scope module: "vouchers" do
-    get "vouchers/filter", to: "vouchers#filter", as: "vouchers_filter"
-    resources :vouchers, only: [:index, :show, :create, :new]
+  scope module: 'vouchers' do
+    get 'vouchers/filter', to: 'vouchers#filter', as: 'vouchers_filter'
+    resources :vouchers, only: [:index, :show, :new, :create]
   end
 
   namespace :retailers do
