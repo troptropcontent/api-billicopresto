@@ -22,7 +22,7 @@ def random_address(grocery_store_database)
 	}
 end
 
-number_of_devise_entity = 20
+number_of_devise_entity = 4
 
 ap I18n.t 'seed.reseting_model_database', model: Product.name
 Product.delete_all
@@ -52,7 +52,7 @@ grocery_store_database.each do |grocery_store|
 	ap I18n.t 'seed.reseting_model_database', model: Item.name
 	retailer.items.delete_all
 	ap I18n.t 'seed.creation_of_seed', model: Item.name
-	random_number_of_item = (10..20).to_a.sample
+	random_number_of_item = (2..4).to_a.sample
 	catalogue = Product.all.sample(random_number_of_item)
 	catalogue.each do |product|
 		ap I18n.t 'seed.creation_of_one_for', model: Item.name, parent_model: retailer.class.name, parent_model_name: retailer.name
@@ -91,20 +91,20 @@ ap I18n.t 'seed.reseting_model_database', model: Receipt.name
 Receipt.delete_all
 ap I18n.t 'seed.creation_of_seed', model: Receipt.name
 Retailer.all.each do |retailer|
-	random_number_of_tills = (1..10).to_a.sample
+	random_number_of_tills = (1..8).to_a.sample
 	random_number_of_tills.times do |n|
 		new_till = retailer.tills.create!(reference: n)
-		random_number_of_receipts = (1..50).to_a.sample
+		random_number_of_receipts = (1..8).to_a.sample
 		random_number_of_receipts.times do
 			random_user = User.all.sample
 			new_receipt = new_till.receipts.create!(reference: next_receipt_reference(retailer), user: random_user, date: rand(1.years.ago..0.years.ago))
 			I18n.t 'seed.receipts.receipt_created', retailer: retailer.name, reference: new_receipt.reference
-			random_number_of_lines = (1..10).to_a.sample
+			random_number_of_lines = (1..3).to_a.sample
 			random_number_of_lines.times do
 				ap I18n.t 'seed.creation_of_one_for', model: ReceiptLine.name, parent_model: new_till.retailer.class.name, parent_model_name: new_till.retailer.name
 				random_item = retailer.items.sample
 				random_quantity = (1..10).to_a.sample
-				random_unit_price = (100..500).to_a.sample
+				random_unit_price = 99
 				taxe_rate = 20
 				new_receipt_line = new_receipt.receipt_lines.create!(
 					quantity: random_quantity,
@@ -129,7 +129,7 @@ Retailer.all.each do |retailer|
 		target_query = "#{target_number} biggest buyers of #{product.name}"
 		random_start_date = (10..20).to_a.sample.days.ago
 		random_end_date = random_start_date + (1..6).to_a.sample.month
-		random_discount = (9..99).to_a.sample
+		random_discount = (9..49).to_a.sample
 		ap I18n.t 'seed.creation_of_one_for', model: Vouchers::Voucher.name, parent_model: Retailer.name, parent_model_name: retailer.name
 		voucher = retailer.vouchers.create!(
 			start_date: random_start_date,
@@ -153,5 +153,5 @@ ap I18n.t 'seed.seed_result', model: Item.name, count: Item.all.count
 ap I18n.t 'seed.seed_result', model: Till.name, count: Till.all.count
 ap I18n.t 'seed.seed_result', model: Receipt.name, count: Receipt.all.count
 ap I18n.t 'seed.seed_result', model: ReceiptLine.name, count: ReceiptLine.all.count
-ap I18n.t 'seed.seed_result', model: Voucher.name, count: Vouchers::Voucher.all.count
-ap I18n.t 'seed.seed_result', model: VoucherTarget.name, count: Vouchers::VoucherTarget.all.count
+ap I18n.t 'seed.seed_result', model: Vouchers::Voucher.name, count: Vouchers::Voucher.all.count
+ap I18n.t 'seed.seed_result', model: Vouchers::VoucherTarget.name, count: Vouchers::VoucherTarget.all.count
