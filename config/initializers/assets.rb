@@ -13,6 +13,6 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 # folder are already added.
 # Rails.application.config.assets.precompile += %w( admin.js admin.css )
 
-if Rails.env.development?
-  Rails.application.config.assets.precompile
-end
+# if Rails.env.development?
+#   Rails.application.config.assets.precompile += %w( ../images/home-mockup.png)
+# end
