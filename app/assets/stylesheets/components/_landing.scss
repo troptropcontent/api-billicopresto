@@ -287,7 +287,7 @@ i {
 @media screen and (max-width: 600px) {
   .banner {
     display: flex;
-    text-align: center;
+    // text-align: center;
     width: 100vw;
     align-items: center;
     padding: 5vw;
@@ -316,7 +316,17 @@ i {
   }
   .why-content {
     display: flex;
-    text-align: center;
+    // text-align: center;
+  }
+  .why-content-bottom {
+    flex-direction: column-reverse;
+    & .who-left {
+      width: 80vw;
+    }
+    & img {
+      margin: 50px 50px;
+      width: 80vw;
+    }
   }
   .why-grid {
     grid-template-columns: 1fr;
@@ -324,6 +334,19 @@ i {
   }
   .why-info {
     margin: 0;
+  }
+  .how {
+    background-size: 500vw 300vh;
+  }
+  .who-content {
+    flex-direction: column;
+    & img {
+      width: 80vw;
+      margin-bottom: 50px;
+    }
+    & .who-left {
+      width: 80vw;
+    }
   }
 
 }
